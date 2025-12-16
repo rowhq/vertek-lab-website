@@ -265,7 +265,7 @@ export function Header() {
         </a>
 
         {/* Right side - Desktop Navigation & CTA */}
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="ml-auto hidden items-center gap-6 lg:flex">
           {/* Menu Toggle */}
           <button
             onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
