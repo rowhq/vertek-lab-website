@@ -52,17 +52,21 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }) {
 function MegaMenu({
   isOpen,
   onClose,
+  triggerRef,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
 }) {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        onClose();
-      }
+      const target = event.target as Node;
+      // Don't close if clicking the trigger button or inside the menu
+      if (triggerRef.current?.contains(target)) return;
+      if (menuRef.current?.contains(target)) return;
+      onClose();
     }
 
     if (isOpen) {
@@ -72,7 +76,7 @@ function MegaMenu({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, triggerRef]);
 
   return (
     <AnimatePresence>
@@ -202,6 +206,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -255,79 +260,52 @@ export function Header() {
         className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:h-24 lg:px-12"
         aria-label="Main navigation"
       >
-        {/* Logo - Center */}
+        {/* Logo - Left */}
         <a
           href="#hero"
-          className="absolute left-1/2 -translate-x-1/2 font-serif text-xl font-medium tracking-tight text-primary transition-colors hover:text-accent lg:text-2xl"
+          className="font-serif text-xl font-medium tracking-tight text-primary transition-colors hover:text-accent lg:text-2xl"
           aria-label="Vertek.lab - Home"
         >
           VERTEK<span className="text-accent">.lab</span>
         </a>
 
-        {/* Right side - Desktop Navigation & CTA */}
-        <div className="ml-auto hidden items-center gap-6 lg:flex">
-          {/* Menu Toggle */}
-          <button
-            onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
-            className="group flex items-center gap-2 text-sm font-medium text-secondary transition-all duration-300 hover:text-primary"
-            aria-expanded={isMegaMenuOpen}
-            aria-haspopup="true"
-          >
-            Menu
-            <ChevronIcon isOpen={isMegaMenuOpen} />
-          </button>
-
-          {/* CTA Button */}
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20"
-          >
-            Start Project
-          </a>
-
+        {/* Right side - Theme Toggle & Menu */}
+        <div className="flex items-center gap-4">
           {/* Theme Toggle */}
           <ThemeToggle />
+
+          {/* Menu Button - Hamburger */}
+          <button
+            ref={menuButtonRef}
+            className="relative z-50 flex h-10 w-10 items-center justify-center"
+            aria-label={isMegaMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMegaMenuOpen}
+            onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+          >
+            <div className="flex flex-col items-center justify-center gap-2">
+              <motion.span
+                animate={{
+                  rotate: isMegaMenuOpen ? 45 : 0,
+                  y: isMegaMenuOpen ? 5 : 0,
+                }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="block h-0.5 w-6 bg-primary"
+              />
+              <motion.span
+                animate={{
+                  rotate: isMegaMenuOpen ? -45 : 0,
+                  y: isMegaMenuOpen ? -5 : 0,
+                }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="block h-0.5 w-6 bg-primary"
+              />
+            </div>
+          </button>
         </div>
-
-        {/* Mobile: Logo on left (when ticker hidden) */}
-        <a
-          href="#hero"
-          className="font-serif text-xl font-medium tracking-tight text-primary transition-colors hover:text-accent lg:hidden"
-          aria-label="Vertek.lab - Home"
-        >
-          VERTEK<span className="text-accent">.lab</span>
-        </a>
-
-        {/* Mobile Menu Button - Hamburger */}
-        <button
-          className="relative z-50 flex h-10 w-10 items-center justify-center lg:hidden"
-          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={isMobileMenuOpen}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <div className="flex flex-col items-center justify-center gap-2">
-            <motion.span
-              animate={{
-                rotate: isMobileMenuOpen ? 45 : 0,
-                y: isMobileMenuOpen ? 5 : 0,
-              }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="block h-0.5 w-6 bg-primary"
-            />
-            <motion.span
-              animate={{
-                rotate: isMobileMenuOpen ? -45 : 0,
-                y: isMobileMenuOpen ? -5 : 0,
-              }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="block h-0.5 w-6 bg-primary"
-            />
-          </div>
-        </button>
       </nav>
 
       {/* Mega Menu - Desktop */}
-      <MegaMenu isOpen={isMegaMenuOpen} onClose={() => setIsMegaMenuOpen(false)} />
+      <MegaMenu isOpen={isMegaMenuOpen} onClose={() => setIsMegaMenuOpen(false)} triggerRef={menuButtonRef} />
 
       {/* Mobile Menu - Full screen panel with accordions */}
       <AnimatePresence>
@@ -403,23 +381,12 @@ export function Header() {
                 </a>
               </motion.div>
 
-              {/* Theme Toggle in mobile menu */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.45 }}
-                className="mt-8 flex items-center gap-3"
-              >
-                <span className="text-sm text-secondary">Theme</span>
-                <ThemeToggle />
-              </motion.div>
-
               {/* Footer info in mobile menu */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-8 border-t border-line/30 pt-8"
+                transition={{ delay: 0.45 }}
+                className="mt-12 border-t border-line/30 pt-8"
               >
                 <p className="text-sm text-secondary">contact@vertek.lab</p>
                 <p className="mt-1 text-sm text-secondary/60">Latin America & Global</p>
