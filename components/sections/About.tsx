@@ -24,7 +24,7 @@ export function About() {
                   className="absolute inset-0 opacity-10"
                   style={{
                     backgroundImage:
-                      'linear-gradient(rgba(255, 107, 0, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 107, 0, 0.3) 1px, transparent 1px)',
+                      'linear-gradient(rgba(197, 224, 99, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(197, 224, 99, 0.3) 1px, transparent 1px)',
                     backgroundSize: '40px 40px',
                   }}
                 />

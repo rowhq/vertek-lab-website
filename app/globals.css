@@ -18,10 +18,10 @@
     --secondary: #666666;
     --secondary-light: #888888;
 
-    /* Accent - Orange (same for both themes) */
-    --accent: #FF6B00;
-    --accent-light: #FF8533;
-    --accent-dark: #CC5500;
+    /* Accent - Lime Green (Geospace style) */
+    --accent: #c5e063;
+    --accent-light: #d4e88a;
+    --accent-dark: #a8c94d;
 
     /* Borders */
     --line: #e5e5e5;
@@ -36,30 +36,30 @@
   }
 
   /* ========================================
-     DARK THEME
+     DARK THEME - Geospace Style
      ======================================== */
   .dark {
-    /* Background palette - dark browns/blacks (Xapo Bank style) */
-    --bg: #0D0B09;
-    --bg-dark: #080706;
-    --bg-card: #151210;
-    --bg-elevated: #1A1614;
+    /* Background palette - near black (Geospace style) */
+    --bg: #0f1110;
+    --bg-dark: #0a0b0a;
+    --bg-card: #1a1c1d;
+    --bg-elevated: #252827;
 
-    /* Text colors */
-    --primary: #ffffff;
-    --secondary: #9A918A;
-    --secondary-light: #B8AFA8;
+    /* Text colors - cream/beige tones */
+    --primary: #d4cfbf;
+    --secondary: #9a9589;
+    --secondary-light: #b8b3a5;
 
     /* Borders */
-    --line: #2A2420;
-    --line-dark: #1A1614;
-    --line-light: #3D3530;
+    --line: #2a2d2e;
+    --line-dark: #1a1c1d;
+    --line-light: #3a3d3e;
 
     /* Hover */
-    --hover: #1A1614;
+    --hover: #252827;
 
     /* Header */
-    --header-bg: rgba(13, 11, 9, 0.85);
+    --header-bg: rgba(15, 17, 16, 0.9);
   }
 
   * {
@@ -80,7 +80,7 @@
   }
 
   .dark body {
-    background: linear-gradient(180deg, #0D0B09 0%, #080706 100%);
+    background: linear-gradient(180deg, #0f1110 0%, #0a0b0a 100%);
   }
 
   /* Snap scroll sections */
@@ -110,8 +110,13 @@
     @apply rounded-full bg-accent px-8 py-4;
     @apply text-sm font-semibold text-white;
     @apply transition-all duration-300;
-    @apply hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20;
+    @apply hover:bg-accent-light hover:shadow-lg;
     @apply focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 20px 25px -5px rgba(197, 224, 99, 0.2), 0 10px 10px -5px rgba(197, 224, 99, 0.04);
   }
 
   .btn-primary-sm {
@@ -179,13 +184,17 @@
     @apply hover:border-accent hover:text-accent;
   }
 
-  /* Accent Button - Orange with glow */
+  /* Accent Button - Lime green with glow */
   .btn-accent {
     @apply inline-flex items-center justify-center gap-2;
     @apply rounded-full bg-accent px-8 py-4;
     @apply text-sm font-semibold text-white;
     @apply transition-all duration-300;
-    @apply hover:bg-accent-light hover:shadow-lg hover:shadow-accent/30;
+    @apply hover:bg-accent-light hover:shadow-lg;
+  }
+
+  .btn-accent:hover {
+    box-shadow: 0 20px 25px -5px rgba(197, 224, 99, 0.3), 0 10px 10px -5px rgba(197, 224, 99, 0.04);
   }
 
   .btn-accent-sm {
@@ -220,20 +229,20 @@
     @apply hover:-translate-y-1;
     position: relative;
     border: 1px solid transparent;
-    background: linear-gradient(#151210, #151210) padding-box,
-                linear-gradient(135deg, #2A2420, #1A1614) border-box;
+    background: linear-gradient(#1a1c1d, #1a1c1d) padding-box,
+                linear-gradient(135deg, #2a2d2e, #1a1c1d) border-box;
   }
 
   .card-premium:hover {
-    background: linear-gradient(#1A1614, #1A1614) padding-box,
-                linear-gradient(135deg, #FF6B00, #2A2420, #FF6B00) border-box;
-    box-shadow: 0 25px 50px -12px rgba(255, 107, 0, 0.15);
+    background: linear-gradient(#252827, #252827) padding-box,
+                linear-gradient(135deg, #c5e063, #252827, #c5e063) border-box;
+    box-shadow: 0 25px 50px -12px rgba(197, 224, 99, 0.15);
   }
 
   /* Gradient border card */
   .card-gradient-border {
     position: relative;
-    background: #151210;
+    background: #1a1c1d;
     border-radius: 1rem;
   }
 
@@ -243,7 +252,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, #FF6B00 0%, transparent 50%, #FF6B00 100%);
+    background: linear-gradient(135deg, #c5e063 0%, transparent 50%, #c5e063 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -309,7 +318,7 @@
     text-wrap: balance;
   }
 
-  /* Text gradient - Orange accent */
+  /* Text gradient - Lime Green accent */
   .text-gradient-accent {
     @apply bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent;
   }
@@ -323,10 +332,10 @@
     @apply inline-flex;
   }
 
-  /* Blueprint grid animation - Orange tinted for dark theme */
+  /* Blueprint grid animation - Geospace style */
   .blueprint-grid {
-    background-image: linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(197, 224, 99, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197, 224, 99, 0.05) 1px, transparent 1px);
     background-size: 50px 50px;
     animation: grid-move 20s linear infinite;
   }
@@ -353,28 +362,28 @@
   /* Video overlay gradient for hero sections - Dark theme */
   .dark .video-overlay {
     background: linear-gradient(180deg,
-      rgba(13, 11, 9, 0.4) 0%,
-      rgba(13, 11, 9, 0.2) 30%,
-      rgba(13, 11, 9, 0.6) 70%,
-      rgba(8, 7, 6, 0.95) 100%
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.2) 30%,
+      rgba(0, 0, 0, 0.6) 70%,
+      rgba(0, 0, 0, 0.95) 100%
     );
   }
 
   /* Glow effects */
   .glow-accent {
-    box-shadow: 0 0 40px rgba(255, 107, 0, 0.3);
+    box-shadow: 0 0 40px rgba(197, 224, 99, 0.3);
   }
 
   .glow-accent-sm {
-    box-shadow: 0 0 20px rgba(255, 107, 0, 0.2);
+    box-shadow: 0 0 20px rgba(197, 224, 99, 0.2);
   }
 
   /* Glass effect for dark theme */
   .glass-dark {
-    background: rgba(21, 18, 16, 0.8);
+    background: rgba(26, 28, 29, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(42, 36, 32, 0.5);
+    border: 1px solid rgba(42, 45, 46, 0.5);
   }
 
   /* Reduced motion */

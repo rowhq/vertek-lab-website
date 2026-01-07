@@ -22,10 +22,10 @@ const config: Config = {
         secondary: 'var(--secondary)',
         'secondary-light': 'var(--secondary-light)',
 
-        // Accent - always orange
-        accent: '#FF6B00',
-        'accent-light': '#FF8533',
-        'accent-dark': '#CC5500',
+        // Accent - Lime Green (Geospace style)
+        accent: '#c5e063',
+        'accent-light': '#d4e88a',
+        'accent-dark': '#a8c94d',
 
         // Borders
         line: 'var(--line)',
@@ -36,14 +36,14 @@ const config: Config = {
         hover: 'var(--hover)',
       },
       borderColor: {
-        DEFAULT: '#2A2420',
+        DEFAULT: '#e5e5e5',
       },
       backgroundImage: {
-        'gradient-dark': 'linear-gradient(180deg, #0D0B09 0%, #080706 100%)',
-        'gradient-card': 'linear-gradient(135deg, #151210 0%, #1A1614 100%)',
-        'gradient-hero': 'linear-gradient(180deg, rgba(13,11,9,0.7) 0%, rgba(8,7,6,0.95) 100%)',
-        'gradient-accent': 'linear-gradient(135deg, #FF6B00 0%, #FF8533 100%)',
-        'gradient-border': 'linear-gradient(135deg, #FF6B00 0%, transparent 50%, #FF6B00 100%)',
+        'gradient-dark': 'linear-gradient(180deg, #0f1110 0%, #0a0b0a 100%)',
+        'gradient-card': 'linear-gradient(135deg, #1a1c1d 0%, #252827 100%)',
+        'gradient-hero': 'linear-gradient(180deg, rgba(15,17,16,0.7) 0%, rgba(10,11,10,0.95) 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #c5e063 0%, #d4e88a 100%)',
+        'gradient-border': 'linear-gradient(135deg, #c5e063 0%, transparent 50%, #c5e063 100%)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
@@ -112,8 +112,8 @@ const config: Config = {
           '100%': { backgroundPosition: '200% 0' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(255, 107, 0, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(255, 107, 0, 0.6)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(197, 224, 99, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(197, 224, 99, 0.6)' },
         },
         gradientShift: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
