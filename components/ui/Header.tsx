@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/lib/utils';
 
 // Navigation items with numbers - Webisoft style
 const navItems = [
@@ -68,8 +67,9 @@ function SidebarMenu({
             <div className="flex items-start justify-between p-8">
               <div>
                 <a href="#hero" onClick={onClose} className="block">
-                  <span className="text-3xl font-bold tracking-tight text-black">VERTEK</span>
-                  <span className="text-3xl font-bold tracking-tight text-accent">.lab</span>
+                  <span className="text-3xl font-bold tracking-tight text-black">V.</span>
+                  <span className="ml-2 text-sm font-medium text-black">VRTK</span>
+                  <span className="text-accent">®</span>
                 </a>
                 <p className="mt-1 text-xs font-medium uppercase tracking-[0.2em] text-secondary">
                   Development Labs
@@ -151,86 +151,85 @@ function SidebarMenu({
 }
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        'fixed left-0 right-0 top-0 z-50 transition-all duration-500',
-        isScrolled
-          ? 'border-b border-line bg-white/95 backdrop-blur-md'
-          : 'bg-transparent'
-      )}
-    >
-      <nav
-        className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:h-24 lg:px-12"
-        aria-label="Main navigation"
-      >
-        {/* Logo - Left */}
-        <a
-          href="#hero"
-          className="group flex flex-col"
-          aria-label="Vertek.lab - Home"
-        >
-          <span className="text-xl font-bold tracking-tight text-black transition-colors group-hover:text-accent lg:text-2xl">
-            VERTEK<span className="text-accent">.lab</span>
-          </span>
-          <span className="hidden text-[10px] font-medium uppercase tracking-[0.15em] text-secondary lg:block">
-            Development Labs
-          </span>
-        </a>
-
-        {/* Right side - CTA & Menu */}
-        <div className="flex items-center gap-4 lg:gap-6">
-          {/* Let's Talk Button - Desktop only */}
-          <a
-            href="#contact"
-            className="hidden items-center gap-2 bg-black px-6 py-3 text-xs font-medium uppercase tracking-wider text-white transition-all hover:bg-gray-800 lg:inline-flex"
-          >
-            Let&apos;s Talk
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+    <header className="fixed left-0 right-0 top-0 z-50 bg-accent">
+      <div className="flex h-24 items-center lg:h-32">
+        {/* Panel izquierdo - gris con logo y menú */}
+        <div className="relative flex h-full items-center gap-6 bg-[#f5f5f5] px-6 lg:gap-8 lg:px-10">
+          {/* Logo */}
+          <a href="#hero" className="flex flex-col">
+            <div className="flex items-center gap-2">
+              <span className="text-3xl font-bold text-black lg:text-4xl">V.</span>
+              <span className="hidden text-sm font-medium text-black sm:inline">VRTK</span>
+              <span className="hidden text-accent sm:inline">®</span>
+            </div>
+            <span className="mt-1 hidden text-[10px] font-medium uppercase tracking-[0.15em] text-secondary lg:block">
+              Development Labs
+            </span>
           </a>
 
-          {/* Menu Button - Hamburger */}
+          {/* Hamburger menu button */}
           <button
-            className="relative z-50 flex h-10 w-10 items-center justify-center"
+            className="flex flex-col items-center justify-center gap-1.5"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <div className="flex flex-col items-center justify-center gap-1.5">
-              <motion.span
-                animate={{
-                  rotate: isMenuOpen ? 45 : 0,
-                  y: isMenuOpen ? 4 : 0,
-                }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="block h-0.5 w-6 bg-black"
-              />
-              <motion.span
-                animate={{
-                  rotate: isMenuOpen ? -45 : 0,
-                  y: isMenuOpen ? -4 : 0,
-                }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="block h-0.5 w-6 bg-black"
-              />
-            </div>
+            <motion.span
+              animate={{
+                rotate: isMenuOpen ? 45 : 0,
+                y: isMenuOpen ? 6 : 0,
+              }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="block h-0.5 w-7 bg-black"
+            />
+            <motion.span
+              animate={{
+                opacity: isMenuOpen ? 0 : 1,
+              }}
+              transition={{ duration: 0.2 }}
+              className="block h-0.5 w-7 bg-black"
+            />
+            <motion.span
+              animate={{
+                rotate: isMenuOpen ? -45 : 0,
+                y: isMenuOpen ? -6 : 0,
+              }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="block h-0.5 w-7 bg-black"
+            />
           </button>
+
+          {/* Corte angular del panel */}
+          <div
+            className="absolute -right-6 bottom-0 h-6 w-6 bg-[#f5f5f5]"
+            style={{ clipPath: 'polygon(0 0, 100% 100%, 0 100%)' }}
+          />
         </div>
-      </nav>
+
+        {/* Línea punteada vertical */}
+        <div className="hidden h-full border-l border-dashed border-black/30 lg:block" />
+
+        {/* Texto central */}
+        <div className="flex flex-1 items-center justify-center px-4 lg:px-8">
+          <h1 className="text-center text-sm font-medium uppercase italic tracking-wide text-black sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+            Structured Systems. Rapid Delivery.
+          </h1>
+        </div>
+
+        {/* Botón derecho */}
+        <a
+          href="#contact"
+          className="flex h-full items-center gap-2 bg-black px-4 text-xs font-medium uppercase tracking-wider text-white transition-all hover:bg-gray-800 sm:px-6 lg:px-8"
+        >
+          <span className="hidden sm:inline">Let&apos;s Talk</span>
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
 
       {/* Sidebar Menu */}
       <SidebarMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
