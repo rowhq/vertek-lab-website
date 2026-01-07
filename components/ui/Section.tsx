@@ -15,13 +15,13 @@ export function Section({
   variant = 'default',
   size = 'default',
 }: SectionProps) {
-  // Dark theme variants (Xapo Bank style)
+  // Light theme variants (Webisoft style)
   const variantClasses = {
-    default: 'bg-bg text-white',
-    dark: 'bg-bg-dark text-white',
-    cream: 'bg-bg-card text-white',
-    accent: 'bg-accent text-white',
-    elevated: 'bg-bg-elevated text-white',
+    default: 'bg-white text-black',
+    dark: 'bg-[#f5f5f5] text-black',
+    cream: 'bg-[#fafafa] text-black',
+    accent: 'bg-accent text-black',
+    elevated: 'bg-[#f0f0f0] text-black',
   };
 
   const sizeClasses = {

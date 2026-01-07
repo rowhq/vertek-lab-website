@@ -152,13 +152,13 @@ function CompetitorIcon({ type }: { type: string }) {
   switch (type) {
     case 'vertek':
       return (
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20">
-          <span className="font-serif text-lg font-bold text-accent">V</span>
+        <div className="flex h-10 w-10 items-center justify-center bg-accent/20">
+          <span className="text-lg font-bold text-accent">V</span>
         </div>
       );
     case 'agency':
       return (
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5">
+        <div className="flex h-10 w-10 items-center justify-center bg-gray-100">
           <svg
             className="h-5 w-5 text-secondary"
             fill="none"
@@ -176,7 +176,7 @@ function CompetitorIcon({ type }: { type: string }) {
       );
     case 'freelancer':
       return (
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5">
+        <div className="flex h-10 w-10 items-center justify-center bg-gray-100">
           <svg
             className="h-5 w-5 text-secondary"
             fill="none"
@@ -194,7 +194,7 @@ function CompetitorIcon({ type }: { type: string }) {
       );
     case 'inhouse':
       return (
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5">
+        <div className="flex h-10 w-10 items-center justify-center bg-gray-100">
           <svg
             className="h-5 w-5 text-secondary"
             fill="none"
@@ -227,7 +227,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-6 font-serif text-4xl font-normal text-primary md:text-5xl lg:text-6xl"
+          className="mb-6 text-4xl font-medium text-black md:text-5xl lg:text-6xl"
         >
           Trusted <em className="italic">By</em>
         </motion.h2>
@@ -244,8 +244,8 @@ export function Testimonials() {
 
       {/* Client Logos - Marquee */}
       <div className="relative mb-20 overflow-hidden py-8">
-        <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-bg to-transparent" />
-        <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-bg to-transparent" />
+        <div className="absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-white to-transparent" />
+        <div className="absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-white to-transparent" />
 
         <div className="flex animate-marquee">
           {[...clients, ...clients, ...clients, ...clients].map((client, i) => (
@@ -268,16 +268,16 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group rounded-2xl border border-line/30 bg-bg-card p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+            className="group border border-line-dark bg-white p-8 transition-all duration-300 hover:border-black hover:shadow-lg"
           >
             {/* Quote */}
-            <blockquote className="mb-8 font-serif text-xl font-normal italic leading-relaxed text-primary">
+            <blockquote className="mb-8 text-xl leading-relaxed text-black">
               &ldquo;{testimonial.quote}&rdquo;
             </blockquote>
 
             {/* Author */}
-            <div className="border-t border-line/30 pt-6">
-              <p className="font-medium text-primary">{testimonial.author}</p>
+            <div className="border-t border-dashed border-line-dark pt-6">
+              <p className="font-medium text-black">{testimonial.author}</p>
               <p className="text-sm text-secondary">{testimonial.role}</p>
             </div>
           </motion.div>
@@ -294,25 +294,25 @@ export function Testimonials() {
       >
         {/* Table Header */}
         <div className="mb-8 text-center">
-          <span className="mb-4 inline-block rounded-full bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-accent">
+          <span className="mb-4 inline-block border border-accent px-4 py-2 text-xs font-semibold uppercase tracking-wider text-accent">
             Competitive Pricing
           </span>
-          <h3 className="font-serif text-3xl font-normal text-primary md:text-4xl">
+          <h3 className="text-3xl font-medium text-black md:text-4xl">
             Transparent <em className="italic">Delivery</em>
           </h3>
         </div>
 
         {/* Tier Tabs */}
         <div className="mb-8 flex justify-center">
-          <div className="inline-flex rounded-full border border-line/30 bg-bg-elevated p-1">
+          <div className="inline-flex border border-line-dark p-1">
             {tiers.map((tier) => (
               <button
                 key={tier.id}
                 onClick={() => setActiveTier(tier.id)}
-                className={`rounded-full px-5 py-3 text-sm font-medium transition-all duration-300 ${
+                className={`px-5 py-3 text-sm font-medium transition-all duration-300 ${
                   activeTier === tier.id
-                    ? 'bg-white text-bg shadow-lg'
-                    : 'text-secondary hover:text-primary'
+                    ? 'bg-black text-white'
+                    : 'text-secondary hover:text-black'
                 }`}
               >
                 {tier.label}
@@ -322,12 +322,12 @@ export function Testimonials() {
         </div>
 
         {/* Comparison Table */}
-        <div className="overflow-hidden rounded-2xl border border-line/30">
+        <div className="overflow-hidden border border-line-dark">
           {/* Desktop Table */}
           <div className="hidden overflow-x-auto md:block">
             <table className="w-full">
               <thead>
-                <tr className="bg-bg-elevated">
+                <tr className="bg-[#f5f5f5]">
                   <th className="px-6 py-5 text-left text-sm font-semibold text-secondary">
                     Platform
                   </th>
@@ -350,12 +350,12 @@ export function Testimonials() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2, delay: index * 0.05 }}
-                      className={`border-t border-line/30 transition-colors ${
+                      className={`border-t border-line-dark transition-colors ${
                         competitor.highlighted
                           ? 'bg-accent/5'
                           : index % 2 === 0
-                            ? 'bg-bg-card'
-                            : 'bg-bg-elevated/50'
+                            ? 'bg-white'
+                            : 'bg-[#fafafa]'
                       }`}
                     >
                       {/* Platform column with icon */}
@@ -370,7 +370,7 @@ export function Testimonials() {
                             {competitor.name}
                           </span>
                           {competitor.highlighted && (
-                            <span className="rounded-full bg-accent px-2 py-0.5 text-xs font-medium text-white">
+                            <span className="bg-accent px-2 py-0.5 text-xs font-medium text-white">
                               Best
                             </span>
                           )}
@@ -399,14 +399,14 @@ export function Testimonials() {
           {/* Mobile Cards View */}
           <div className="md:hidden">
             {/* Mobile Tab Selector */}
-            <div className="flex overflow-x-auto border-b border-line/30 bg-bg-elevated p-2">
+            <div className="flex overflow-x-auto border-b border-line-dark bg-[#f5f5f5] p-2">
               {tiers.map((tier) => (
                 <button
                   key={tier.id}
                   onClick={() => setActiveTier(tier.id)}
-                  className={`flex-shrink-0 rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+                  className={`flex-shrink-0 px-4 py-2 text-sm font-medium transition-all ${
                     activeTier === tier.id
-                      ? 'bg-white text-bg'
+                      ? 'bg-black text-white'
                       : 'text-secondary'
                   }`}
                 >
@@ -424,13 +424,13 @@ export function Testimonials() {
                 transition={{ duration: 0.2 }}
               >
                 {/* Vertek.lab highlighted card */}
-                <div className="border-b border-line/30 bg-accent/5 p-6">
+                <div className="border-b border-line-dark bg-accent/5 p-6">
                   <div className="mb-4 flex items-center gap-3">
                     <CompetitorIcon type="vertek" />
-                    <h4 className="font-serif text-xl font-medium text-accent">
+                    <h4 className="text-xl font-medium text-accent">
                       Vertek.lab
                     </h4>
-                    <span className="rounded-full bg-accent px-3 py-1 text-xs font-medium text-white">
+                    <span className="bg-accent px-3 py-1 text-xs font-medium text-white">
                       Best Value
                     </span>
                   </div>
@@ -452,11 +452,11 @@ export function Testimonials() {
                   .map((competitor) => (
                     <div
                       key={competitor.id}
-                      className="border-b border-line/30 bg-bg-card p-6"
+                      className="border-b border-line-dark bg-white p-6"
                     >
                       <div className="mb-4 flex items-center gap-3">
                         <CompetitorIcon type={competitor.id} />
-                        <h4 className="font-medium text-primary">{competitor.name}</h4>
+                        <h4 className="font-medium text-black">{competitor.name}</h4>
                       </div>
                       <div className="space-y-3">
                         {currentData.map((row) => (
@@ -490,12 +490,12 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
-              className="rounded-2xl border border-line/30 bg-bg-card p-6 text-center transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+              className="border border-line-dark bg-white p-6 text-center transition-all hover:border-black hover:shadow-lg"
             >
-              <div className="font-serif text-4xl font-medium text-accent">
+              <div className="text-4xl font-medium text-accent">
                 {stat.value}
               </div>
-              <p className="mt-2 font-medium text-primary">{stat.label}</p>
+              <p className="mt-2 font-medium text-black">{stat.label}</p>
               <p className="text-sm text-secondary">{stat.sub}</p>
             </motion.div>
           ))}

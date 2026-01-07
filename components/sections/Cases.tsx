@@ -39,7 +39,7 @@ export function Cases() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-6 font-serif text-4xl font-normal text-primary md:text-5xl lg:text-6xl"
+          className="mb-6 text-4xl font-medium text-black md:text-5xl lg:text-6xl"
         >
           Case <em className="italic">Snapshots</em>
         </motion.h2>
@@ -63,7 +63,7 @@ export function Cases() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{ y: -8 }}
-            className="group overflow-hidden rounded-2xl border border-line/30 bg-bg-card transition-all duration-500 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+            className="group overflow-hidden border border-line-dark bg-white transition-all duration-300 hover:border-black hover:shadow-lg"
           >
             {/* Image/Gradient Placeholder */}
             <div className="relative aspect-[4/3] overflow-hidden">
@@ -71,7 +71,7 @@ export function Cases() {
 
               {/* Overlay on hover */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
-                <span className="translate-y-4 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <span className="translate-y-4 bg-accent px-6 py-3 text-sm font-medium text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   View Case
                 </span>
               </div>
@@ -85,7 +85,7 @@ export function Cases() {
               </span>
 
               {/* Title */}
-              <h3 className="mt-3 font-serif text-2xl font-medium text-primary transition-colors group-hover:text-accent">
+              <h3 className="mt-3 text-2xl font-medium text-black transition-colors group-hover:text-accent">
                 {item.title}
               </h3>
 
@@ -93,16 +93,16 @@ export function Cases() {
               <p className="mt-3 text-secondary">{item.description}</p>
 
               {/* Metrics */}
-              <div className="mt-6 flex items-center gap-6 border-t border-line/30 pt-6">
+              <div className="mt-6 flex items-center gap-6 border-t border-dashed border-line-dark pt-6">
                 <div>
-                  <span className="font-serif text-2xl font-medium text-accent">
+                  <span className="text-2xl font-medium text-accent">
                     {item.timeline}
                   </span>
                   <span className="ml-2 text-sm text-secondary">delivery</span>
                 </div>
-                <div className="h-8 w-px bg-line/30" />
+                <div className="h-8 w-px bg-line-dark" />
                 <div>
-                  <span className="font-serif text-2xl font-medium text-primary">
+                  <span className="text-2xl font-medium text-black">
                     {item.investment}
                   </span>
                   <span className="ml-2 text-sm text-secondary">investment</span>
@@ -114,7 +114,7 @@ export function Cases() {
                 {item.tech.map((tech, i) => (
                   <span
                     key={i}
-                    className="rounded-full border border-line/30 bg-bg-elevated px-3 py-1 text-xs text-secondary transition-colors group-hover:border-accent/30"
+                    className="border border-line-dark bg-white px-3 py-1 text-xs text-secondary transition-colors group-hover:border-accent"
                   >
                     {tech}
                   </span>

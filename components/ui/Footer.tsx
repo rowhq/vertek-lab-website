@@ -6,210 +6,200 @@ const footerLinks = {
   services: {
     title: 'Services',
     links: [
-      { label: 'What We Build', href: '#build' },
-      { label: 'Our Method', href: '#method' },
-      { label: 'Enterprise Integration', href: '#enterprise' },
-      { label: 'Pricing', href: '#pricing' },
+      { label: 'Advisory', href: '#services' },
+      { label: 'AI Development', href: '#services' },
+      { label: 'Product Development', href: '#services' },
+      { label: 'Enterprise Software', href: '#enterprise' },
     ],
   },
-  company: {
-    title: 'Company',
+  projects: {
+    title: 'Projects',
     links: [
-      { label: 'About Us', href: '#about' },
-      { label: 'Case Studies', href: '#cases' },
-      { label: 'How We Work', href: '#how-we-work' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'Case Studies', href: '#cases', external: false },
+      { label: 'Blog', href: '#', external: true },
+      { label: 'Articles', href: '#', external: true },
     ],
   },
-  resources: {
-    title: 'Resources',
+  social: {
+    title: 'Social Media',
     links: [
-      { label: 'Documentation', href: '#' },
-      { label: 'Blog', href: '#' },
-      { label: 'FAQs', href: '#' },
+      { label: 'LinkedIn', href: 'https://linkedin.com/company/verteklab', external: true },
+      { label: 'Twitter', href: 'https://x.com/verteklab', external: true },
+      { label: 'GitHub', href: 'https://github.com/verteklab', external: true },
     ],
   },
 };
 
-const socialLinks = [
-  {
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/company/verteklab',
-    icon: (
-      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-      </svg>
-    ),
-  },
-  {
-    label: 'X (Twitter)',
-    href: 'https://x.com/verteklab',
-    icon: (
-      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-      </svg>
-    ),
-  },
-  {
-    label: 'GitHub',
-    href: 'https://github.com/verteklab',
-    icon: (
-      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-      </svg>
-    ),
-  },
-];
+// Arrow icon for external links
+function ArrowIcon() {
+  return (
+    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+    </svg>
+  );
+}
 
 export function Footer() {
   return (
-    <footer className="bg-bg-dark text-primary" role="contentinfo">
-      {/* CTA Section */}
-      <div className="mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex flex-col items-center text-center"
-        >
-          <h2 className="font-serif text-4xl font-normal md:text-5xl lg:text-6xl">
-            Ready to <em className="italic">build</em>?
-          </h2>
-          <p className="mt-6 max-w-md text-lg text-primary/60">
-            Let&apos;s architect your next intelligent system together.
-          </p>
-          <motion.a
-            href="#contact"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="btn-accent mt-8"
+    <footer className="bg-white text-black" role="contentinfo">
+      {/* CTA Section - Salmon background */}
+      <div className="bg-accent">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center"
           >
-            Start a Project
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </motion.a>
-        </motion.div>
-      </div>
-
-      {/* Divider */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="h-px bg-line-dark" />
-      </div>
-
-      {/* Footer Content - Multi-column */}
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
-          {/* Logo & Description Column */}
-          <div className="lg:col-span-2">
-            <a href="#hero" className="inline-block font-serif text-2xl">
-              VERTEK<span className="text-accent">.lab</span>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-black/60">
+                Contact Us
+              </p>
+              <h2 className="mt-2 text-3xl font-medium text-black md:text-4xl lg:text-5xl">
+                LET&apos;S TALK
+              </h2>
+            </div>
+            <a
+              href="#contact"
+              className="flex h-16 w-16 items-center justify-center border-2 border-black/20 text-black transition-all hover:bg-black hover:text-white lg:h-20 lg:w-20"
+            >
+              <svg className="h-6 w-6 lg:h-8 lg:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </a>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-primary/60">
-              We design and engineer intelligent infrastructures — fast, modular, and
-              built to scale. AI-First engineering studio based in Latin America.
-            </p>
+          </motion.div>
 
-            {/* Social Links */}
-            <div className="mt-6 flex items-center gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary/40 transition-colors hover:text-accent"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
+          {/* Reference number */}
+          <div className="mt-8 flex items-center gap-2 border-t border-dashed border-black/20 pt-6">
+            <span className="text-sm text-black/60">/</span>
+            <span className="text-sm font-medium text-black">V034671</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="border-t border-dashed border-line-dark">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+            {/* Logo & Description */}
+            <div className="lg:col-span-1">
+              <a href="#hero" className="inline-block">
+                <span className="text-2xl font-bold tracking-tight text-black">VERTEK</span>
+                <span className="text-2xl font-bold tracking-tight text-accent">.lab</span>
+              </a>
+              <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-secondary">
+                Development Labs
+              </p>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-black">
+                {footerLinks.services.title}
+              </h3>
+              <ul className="space-y-3">
+                {footerLinks.services.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-secondary transition-colors hover:text-black"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Projects */}
+            <div>
+              <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-black">
+                {footerLinks.projects.title}
+              </h3>
+              <ul className="space-y-3">
+                {footerLinks.projects.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
+                      className="inline-flex items-center gap-1 text-sm text-secondary transition-colors hover:text-black"
+                    >
+                      {link.label}
+                      {link.external && <ArrowIcon />}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Social Media */}
+            <div>
+              <h3 className="mb-6 text-xs font-semibold uppercase tracking-wider text-black">
+                {footerLinks.social.title}
+              </h3>
+              <ul className="space-y-3">
+                {footerLinks.social.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm text-secondary transition-colors hover:text-black"
+                    >
+                      {link.label}
+                      <ArrowIcon />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Services Column */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary/40">
-              {footerLinks.services.title}
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.services.links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-primary/60 transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company Column */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary/40">
-              {footerLinks.company.title}
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.company.links.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-primary/60 transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Column */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary/40">
-              Get in Touch
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  href="mailto:contact@vertek.lab"
-                  className="text-sm text-primary/60 transition-colors hover:text-primary"
-                >
-                  contact@vertek.lab
-                </a>
-              </li>
-              <li className="text-sm text-primary/40">Latin America & Global</li>
-              <li className="text-sm text-primary/40">Response within 24h</li>
-            </ul>
+      {/* Office Section */}
+      <div className="border-t border-dashed border-line-dark">
+        <div className="mx-auto max-w-7xl px-6 py-8 lg:px-12">
+          <div className="grid gap-8 md:grid-cols-3">
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-black">
+                Office
+              </h4>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-black">
+                Latin America
+              </h4>
+              <p className="mt-3 text-sm text-secondary">Remote-First</p>
+              <p className="text-sm text-secondary">Global Operations</p>
+            </div>
+            <div>
+              <p className="text-sm text-secondary">Contact us</p>
+              <a href="mailto:contact@vertek.lab" className="mt-1 block text-sm font-medium text-black hover:text-accent">
+                contact@vertek.lab
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-line-dark">
+      <div className="border-t border-dashed border-line-dark">
         <div className="mx-auto max-w-7xl px-6 py-6 lg:px-12">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-xs text-primary/40">
-              © {new Date().getFullYear()} Vertek.lab. All rights reserved.
+            <p className="text-xs text-secondary">
+              © {new Date().getFullYear()} VERTEK.lab
             </p>
-            <div className="flex items-center gap-6 text-xs text-primary/40">
-              <a href="/privacy" className="transition-colors hover:text-primary">
+            <div className="flex items-center gap-6">
+              <a href="/privacy" className="text-xs text-secondary transition-colors hover:text-black">
                 Privacy Policy
               </a>
-              <a href="/terms" className="transition-colors hover:text-primary">
-                Terms of Service
-              </a>
-              <a href="/cookies" className="transition-colors hover:text-primary">
-                Cookies
-              </a>
             </div>
+            <p className="text-xs text-secondary">
+              Designed by <span className="font-medium text-black">ROWSHIP</span>
+            </p>
           </div>
         </div>
       </div>

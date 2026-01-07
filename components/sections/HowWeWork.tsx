@@ -38,7 +38,7 @@ export function HowWeWork() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-6 font-serif text-4xl font-normal text-primary md:text-5xl lg:text-6xl"
+          className="mb-6 text-4xl font-medium text-black md:text-5xl lg:text-6xl"
         >
           How We <em className="italic">Work</em>
         </motion.h2>
@@ -68,24 +68,24 @@ export function HowWeWork() {
               transition={{ duration: 0.5, delay: index * 0.15 }}
               className="relative"
             >
-              {/* Number circle */}
+              {/* Number */}
               <div className="mb-8 flex justify-center">
-                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full border border-accent/30 bg-bg-card">
-                  <span className="font-serif text-2xl font-medium text-accent">
+                <div className="relative z-10 flex h-16 w-16 items-center justify-center border border-line-dark bg-white">
+                  <span className="text-2xl font-medium text-accent">
                     {step.number}
                   </span>
                 </div>
               </div>
 
               {/* Card */}
-              <div className="rounded-2xl border border-line/30 bg-bg-card p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5">
+              <div className="border border-line-dark bg-white p-8 transition-all duration-300 hover:border-black hover:shadow-lg">
                 {/* Timeline badge */}
-                <span className="mb-4 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+                <span className="mb-4 inline-block border border-accent px-3 py-1 text-xs font-medium text-accent">
                   {step.timeline}
                 </span>
 
                 {/* Title */}
-                <h3 className="mb-3 font-serif text-xl font-medium text-primary">
+                <h3 className="mb-3 text-xl font-medium text-black">
                   {step.title}
                 </h3>
 

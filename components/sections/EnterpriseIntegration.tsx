@@ -14,7 +14,7 @@ export function EnterpriseIntegration() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 font-serif text-4xl font-normal text-primary md:text-5xl lg:text-6xl">
+          <h2 className="mb-6 text-4xl font-medium text-black md:text-5xl lg:text-6xl">
             Enterprise <em className="italic">Integration</em>
           </h2>
           <p className="mb-6 text-xl text-accent">
@@ -69,9 +69,9 @@ export function EnterpriseIntegration() {
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="absolute left-1/2 top-1/2 z-10 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-accent/30 bg-bg-card shadow-lg shadow-accent/10"
+              className="absolute left-1/2 top-1/2 z-10 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-line-dark bg-white shadow-lg"
             >
-              <span className="text-center font-serif text-lg font-medium text-primary">
+              <span className="text-center text-lg font-medium text-black">
                 AI Layer
               </span>
             </motion.div>
@@ -95,7 +95,7 @@ export function EnterpriseIntegration() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                  className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-line/30 bg-bg-card text-xs font-medium text-secondary shadow-sm transition-all hover:border-accent/30 hover:text-primary"
+                  className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center border border-line-dark bg-white text-xs font-medium text-secondary shadow-sm transition-all hover:border-accent hover:text-black"
                   style={{
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
                   }}

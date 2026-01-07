@@ -3,210 +3,156 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { ThemeToggle } from './ThemeToggle';
 
-// Navigation structure with mega-menu columns
-const navGroups = [
-  {
-    label: 'Services',
-    items: [
-      { label: 'What We Build', href: '#build', description: 'AI-powered systems and platforms' },
-      { label: 'Our Method', href: '#method', description: 'Rapid development process' },
-      { label: 'Enterprise', href: '#enterprise', description: 'Scalable enterprise solutions' },
-    ],
-  },
-  {
-    label: 'Work',
-    items: [
-      { label: 'Case Studies', href: '#cases', description: 'Client success stories' },
-      { label: 'Testimonials', href: '#testimonials', description: 'What clients say' },
-    ],
-  },
-  {
-    label: 'Company',
-    items: [
-      { label: 'About Us', href: '#about', description: 'Our mission and team' },
-      { label: 'Pricing', href: '#pricing', description: 'Transparent packages' },
-      { label: 'How We Work', href: '#how-we-work', description: 'Collaboration process' },
-    ],
-  },
+// Navigation items with numbers - Webisoft style
+const navItems = [
+  { number: '01', label: 'Services', href: '#services' },
+  { number: '02', label: 'Projects', href: '#cases' },
+  { number: '03', label: 'Expertise', href: '#method' },
+  { number: '04', label: 'Contact', href: '#contact' },
 ];
 
-// Chevron icon component
-function ChevronIcon({ isOpen }: { isOpen: boolean }) {
-  return (
-    <motion.svg
-      animate={{ rotate: isOpen ? 180 : 0 }}
-      transition={{ duration: 0.2 }}
-      className="h-4 w-4"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-    </motion.svg>
-  );
-}
-
-// Mega Menu Panel (desktop)
-function MegaMenu({
+// Sidebar Menu - Webisoft style
+function SidebarMenu({
   isOpen,
   onClose,
-  triggerRef,
 }: {
   isOpen: boolean;
   onClose: () => void;
-  triggerRef: React.RefObject<HTMLButtonElement | null>;
 }) {
   const menuRef = useRef<HTMLDivElement>(null);
 
+  // Close on escape key
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      const target = event.target as Node;
-      // Don't close if clicking the trigger button or inside the menu
-      if (triggerRef.current?.contains(target)) return;
-      if (menuRef.current?.contains(target)) return;
-      onClose();
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        onClose();
+      }
     }
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
     };
-  }, [isOpen, onClose, triggerRef]);
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          ref={menuRef}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute left-0 right-0 top-full z-50 border-t border-line/30 mega-menu-panel"
-        >
-          <div className="mx-auto max-w-7xl px-6 py-8 lg:px-12">
-            <div className="grid grid-cols-4 gap-8">
-              {/* Navigation Columns */}
-              {navGroups.map((group) => (
-                <div key={group.label}>
-                  <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-secondary">
-                    {group.label}
-                  </h3>
-                  <ul className="space-y-1">
-                    {group.items.map((item) => (
-                      <li key={item.href}>
-                        <a
-                          href={item.href}
-                          onClick={onClose}
-                          className="group flex items-start gap-3 rounded-lg px-3 py-2 transition-all duration-200 hover:bg-bg-elevated"
-                        >
-                          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent opacity-0 transition-opacity group-hover:opacity-100" />
-                          <div>
-                            <span className="block text-sm font-medium text-primary group-hover:text-accent">
-                              {item.label}
-                            </span>
-                            <span className="block text-xs text-secondary">
-                              {item.description}
-                            </span>
-                          </div>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-black/20"
+            onClick={onClose}
+          />
 
-              {/* CTA Column */}
-              <div className="flex flex-col justify-between rounded-2xl bg-bg-elevated p-6">
+          {/* Sidebar Panel */}
+          <motion.div
+            ref={menuRef}
+            initial={{ x: '-100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-100%' }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed left-0 top-0 z-50 flex h-full w-full max-w-lg flex-col bg-[#f5f5f5]"
+          >
+            {/* Header */}
+            <div className="flex items-start justify-between p-8">
+              <div>
+                <a href="#hero" onClick={onClose} className="block">
+                  <span className="text-3xl font-bold tracking-tight text-black">VERTEK</span>
+                  <span className="text-3xl font-bold tracking-tight text-accent">.lab</span>
+                </a>
+                <p className="mt-1 text-xs font-medium uppercase tracking-[0.2em] text-secondary">
+                  Development Labs
+                </p>
+              </div>
+              <button
+                onClick={onClose}
+                className="p-2 text-black transition-colors hover:text-accent"
+                aria-label="Close menu"
+              >
+                <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Navigation Items - Numbered */}
+            <nav className="flex-1 px-8">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + index * 0.05 }}
+                >
+                  <a
+                    href={item.href}
+                    onClick={onClose}
+                    className="group flex items-center gap-6 border-b border-dashed border-gray-300 py-5 transition-colors hover:text-accent"
+                  >
+                    <span className="text-sm font-medium text-secondary group-hover:text-accent">
+                      {item.number}
+                    </span>
+                    <span className="text-2xl font-medium text-black group-hover:text-accent">
+                      {item.label}
+                    </span>
+                    {item.label === 'Services' && (
+                      <span className="ml-auto text-secondary group-hover:text-accent">+</span>
+                    )}
+                  </a>
+                </motion.div>
+              ))}
+            </nav>
+
+            {/* Footer CTA - Salmon background */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-accent p-8"
+            >
+              <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="mb-2 font-serif text-xl text-primary">
-                    Ready to build?
-                  </h3>
-                  <p className="text-sm text-secondary">
-                    Start your project in days, not months. MVP delivery in 5-7 days.
+                  <p className="text-xs font-medium uppercase tracking-wider text-black/70">
+                    Contact Us
                   </p>
+                  <p className="mt-1 text-2xl font-medium text-black">LET&apos;S TALK</p>
                 </div>
                 <a
                   href="#contact"
                   onClick={onClose}
-                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20"
+                  className="flex h-12 w-12 items-center justify-center border border-black/20 text-black transition-all hover:bg-black hover:text-white"
                 >
-                  Start Project
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </a>
               </div>
-            </div>
-          </div>
-        </motion.div>
+              <div className="mt-4 flex items-center gap-2 border-t border-dashed border-black/20 pt-4">
+                <span className="text-sm text-black/70">/</span>
+                <span className="text-sm font-medium text-black">V034671</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );
 }
 
-// Mobile Accordion component
-function MobileAccordion({
-  group,
-  isOpen,
-  onToggle,
-  onNavigate,
-}: {
-  group: (typeof navGroups)[0];
-  isOpen: boolean;
-  onToggle: () => void;
-  onNavigate: () => void;
-}) {
-  return (
-    <div className="border-b border-line/30">
-      <button
-        onClick={onToggle}
-        className="flex w-full items-center justify-between py-5"
-        aria-expanded={isOpen}
-      >
-        <span className="font-serif text-2xl font-normal text-primary">{group.label}</span>
-        <ChevronIcon isOpen={isOpen} />
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="space-y-1 pb-4 pl-4">
-              {group.items.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={onNavigate}
-                  className="block py-2 text-lg text-secondary transition-colors hover:text-accent"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
-  const [openMobileAccordion, setOpenMobileAccordion] = useState<string | null>(null);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -217,42 +163,12 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on resize
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) {
-        setIsMobileMenuOpen(false);
-        setOpenMobileAccordion(null);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMobileMenuOpen]);
-
-  const handleMobileNavigate = () => {
-    setIsMobileMenuOpen(false);
-    setOpenMobileAccordion(null);
-  };
-
   return (
     <header
       className={cn(
         'fixed left-0 right-0 top-0 z-50 transition-all duration-500',
         isScrolled
-          ? 'border-b border-line/30 header-translucent'
+          ? 'border-b border-line bg-white/95 backdrop-blur-md'
           : 'bg-transparent'
       )}
     >
@@ -263,138 +179,61 @@ export function Header() {
         {/* Logo - Left */}
         <a
           href="#hero"
-          className="font-serif text-xl font-medium tracking-tight text-primary transition-colors hover:text-accent lg:text-2xl"
+          className="group flex flex-col"
           aria-label="Vertek.lab - Home"
         >
-          VERTEK<span className="text-accent">.lab</span>
+          <span className="text-xl font-bold tracking-tight text-black transition-colors group-hover:text-accent lg:text-2xl">
+            VERTEK<span className="text-accent">.lab</span>
+          </span>
+          <span className="hidden text-[10px] font-medium uppercase tracking-[0.15em] text-secondary lg:block">
+            Development Labs
+          </span>
         </a>
 
-        {/* Right side - Theme Toggle & Menu */}
-        <div className="flex items-center gap-4">
-          {/* Theme Toggle */}
-          <ThemeToggle />
+        {/* Right side - CTA & Menu */}
+        <div className="flex items-center gap-4 lg:gap-6">
+          {/* Let's Talk Button - Desktop only */}
+          <a
+            href="#contact"
+            className="hidden items-center gap-2 bg-black px-6 py-3 text-xs font-medium uppercase tracking-wider text-white transition-all hover:bg-gray-800 lg:inline-flex"
+          >
+            Let&apos;s Talk
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
 
           {/* Menu Button - Hamburger */}
           <button
-            ref={menuButtonRef}
             className="relative z-50 flex h-10 w-10 items-center justify-center"
-            aria-label={isMegaMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMegaMenuOpen}
-            onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <div className="flex flex-col items-center justify-center gap-2">
+            <div className="flex flex-col items-center justify-center gap-1.5">
               <motion.span
                 animate={{
-                  rotate: isMegaMenuOpen ? 45 : 0,
-                  y: isMegaMenuOpen ? 5 : 0,
+                  rotate: isMenuOpen ? 45 : 0,
+                  y: isMenuOpen ? 4 : 0,
                 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="block h-0.5 w-6 bg-primary"
+                className="block h-0.5 w-6 bg-black"
               />
               <motion.span
                 animate={{
-                  rotate: isMegaMenuOpen ? -45 : 0,
-                  y: isMegaMenuOpen ? -5 : 0,
+                  rotate: isMenuOpen ? -45 : 0,
+                  y: isMenuOpen ? -4 : 0,
                 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="block h-0.5 w-6 bg-primary"
+                className="block h-0.5 w-6 bg-black"
               />
             </div>
           </button>
         </div>
       </nav>
 
-      {/* Mega Menu - Desktop */}
-      <MegaMenu isOpen={isMegaMenuOpen} onClose={() => setIsMegaMenuOpen(false)} triggerRef={menuButtonRef} />
-
-      {/* Mobile Menu - Full screen panel with accordions */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 top-0 z-40 overflow-y-auto bg-bg"
-          >
-            <div className="flex min-h-full flex-col px-6 pb-12 pt-24">
-              {/* Navigation Accordions */}
-              <nav className="flex-1">
-                {navGroups.map((group, index) => (
-                  <motion.div
-                    key={group.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <MobileAccordion
-                      group={group}
-                      isOpen={openMobileAccordion === group.label}
-                      onToggle={() =>
-                        setOpenMobileAccordion(
-                          openMobileAccordion === group.label ? null : group.label
-                        )
-                      }
-                      onNavigate={handleMobileNavigate}
-                    />
-                  </motion.div>
-                ))}
-
-                {/* Direct Contact link in mobile */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="border-b border-line/30"
-                >
-                  <a
-                    href="#contact"
-                    onClick={handleMobileNavigate}
-                    className="block py-5 font-serif text-2xl font-normal text-primary transition-colors hover:text-accent"
-                  >
-                    Contact
-                  </a>
-                </motion.div>
-              </nav>
-
-              {/* Mobile CTA */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-8"
-              >
-                <a
-                  href="#contact"
-                  className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-accent px-8 py-4 text-base font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20"
-                  onClick={handleMobileNavigate}
-                >
-                  Start a Project
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                </a>
-              </motion.div>
-
-              {/* Footer info in mobile menu */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.45 }}
-                className="mt-12 border-t border-line/30 pt-8"
-              >
-                <p className="text-sm text-secondary">contact@vertek.lab</p>
-                <p className="mt-1 text-sm text-secondary/60">Latin America & Global</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Sidebar Menu */}
+      <SidebarMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </header>
   );
 }

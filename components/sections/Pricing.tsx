@@ -62,7 +62,7 @@ export function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-6 font-serif text-4xl font-normal text-primary md:text-5xl lg:text-6xl"
+          className="mb-6 text-4xl font-medium text-black md:text-5xl lg:text-6xl"
         >
           Investment <em className="italic">Ranges</em>
         </motion.h2>
@@ -86,23 +86,23 @@ export function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`group relative flex flex-col rounded-2xl border p-10 transition-all duration-500 ${
+            className={`group relative flex flex-col border p-10 transition-all duration-300 ${
               pkg.highlighted
-                ? 'border-accent/50 bg-bg-card shadow-lg shadow-accent/10'
-                : 'border-line/30 bg-bg-card hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5'
+                ? 'border-accent bg-white shadow-lg'
+                : 'border-line-dark bg-white hover:border-black hover:shadow-lg'
             }`}
           >
             {/* Recommended Badge */}
             {pkg.highlighted && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span className="rounded-full bg-accent px-4 py-1.5 text-xs font-medium text-white">
+                <span className="bg-accent px-4 py-1.5 text-xs font-medium text-white">
                   Recommended
                 </span>
               </div>
             )}
 
             {/* Package Name */}
-            <h3 className="mb-2 font-serif text-2xl font-medium text-primary">
+            <h3 className="mb-2 text-2xl font-medium text-black">
               {pkg.name}
             </h3>
 
@@ -123,7 +123,7 @@ export function Pricing() {
               {pkg.priceLabel && (
                 <span className="text-sm text-secondary">{pkg.priceLabel}</span>
               )}
-              <div className="font-serif text-5xl font-normal text-primary">
+              <div className="text-5xl font-medium text-black">
                 {pkg.price}
               </div>
             </div>

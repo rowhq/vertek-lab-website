@@ -40,7 +40,7 @@ export function MethodTimeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-6 font-serif text-4xl font-normal text-primary md:text-5xl lg:text-6xl"
+          className="mb-6 text-4xl font-medium text-black md:text-5xl lg:text-6xl"
         >
           The <em className="italic">Method</em>
         </motion.h2>
@@ -85,8 +85,8 @@ export function MethodTimeline() {
             >
               {/* Number */}
               <div className="relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center md:absolute md:left-1/2 md:-translate-x-1/2">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-accent/30 bg-bg-card">
-                  <span className="font-serif text-2xl font-medium text-accent">
+                <div className="flex h-16 w-16 items-center justify-center border border-line-dark bg-white">
+                  <span className="text-2xl font-medium text-accent">
                     {step.number}
                   </span>
                 </div>
@@ -96,13 +96,13 @@ export function MethodTimeline() {
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3 }}
-                className={`flex-1 rounded-2xl border border-line/30 bg-bg-card p-8 transition-all duration-500 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 md:w-[calc(50%-4rem)] ${
+                className={`flex-1 border border-line-dark bg-white p-8 transition-all duration-300 hover:border-black hover:shadow-lg md:w-[calc(50%-4rem)] ${
                   index % 2 === 0
                     ? 'md:mr-auto md:text-right'
                     : 'md:ml-auto md:text-left'
                 }`}
               >
-                <h3 className="mb-3 font-serif text-2xl font-medium text-primary">
+                <h3 className="mb-3 text-2xl font-medium text-black">
                   {step.title}
                 </h3>
                 <p className="leading-relaxed text-secondary">

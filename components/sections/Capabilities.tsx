@@ -1,202 +1,126 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Section } from '@/components/ui/Section';
 
-const capabilities = [
+const services = [
   {
-    title: 'Web2 Products',
-    subtitle: 'Enterprise-grade applications',
-    description:
-      'Enterprise platforms, SaaS applications, and traditional web systems built with modern architecture. From internal tools to customer-facing platforms.',
-    features: ['SaaS Platforms', 'Admin Dashboards', 'API Development', 'Database Design'],
-    visual: {
-      gradient: 'from-blue-500/20 to-cyan-500/10',
-      icon: (
-        <svg
-          className="h-24 w-24 text-accent/40"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="1"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-        </svg>
-      ),
-    },
+    number: 'S/001',
+    title: 'Advisory',
+    description: 'Strategic consulting for digital transformation and technology roadmaps.',
+    link: '#contact',
   },
   {
-    title: 'Web3 Products',
-    subtitle: 'Blockchain & DeFi solutions',
-    description:
-      'DeFi platforms, NFT marketplaces, DAOs, and blockchain integration. Full-stack Web3 development with smart contract expertise.',
-    features: ['DeFi Protocols', 'NFT Platforms', 'Smart Contracts', 'Wallet Integration'],
-    visual: {
-      gradient: 'from-purple-500/20 to-pink-500/10',
-      icon: (
-        <svg
-          className="h-24 w-24 text-accent/40"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="1"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-        </svg>
-      ),
-    },
+    number: 'S/002',
+    title: 'AI Development',
+    description: 'Custom AI solutions, machine learning models, and intelligent automation systems.',
+    link: '#contact',
   },
   {
-    title: 'Enterprise Integration',
-    subtitle: 'Legacy system modernization',
-    description:
-      'Seamless connections with SAP, CRMs, ERPs, or proprietary systems. We build the connective tissue for complex ecosystems.',
-    features: ['SAP Integration', 'CRM/ERP Sync', 'API Gateway', 'Data Migration'],
-    visual: {
-      gradient: 'from-amber-500/20 to-orange-500/10',
-      icon: (
-        <svg
-          className="h-24 w-24 text-accent/40"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="1"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-    },
+    number: 'S/003',
+    title: 'Product Development',
+    description: 'Full-stack web and mobile applications from concept to launch in weeks, not months.',
+    link: '#contact',
+  },
+  {
+    number: 'S/004',
+    title: 'Enterprise Software',
+    description: 'Scalable enterprise solutions with seamless integration to existing systems.',
+    link: '#contact',
+  },
+  {
+    number: 'S/005',
+    title: 'Blockchain & Web3',
+    description: 'DeFi platforms, smart contracts, and decentralized applications.',
+    link: '#contact',
   },
 ];
 
 export function Capabilities() {
   return (
-    <Section id="build">
-      {/* Section Header */}
-      <div className="mb-20 text-center">
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-4 inline-block rounded-full bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-accent"
-        >
-          Our Services
-        </motion.span>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6 font-serif text-4xl font-normal text-primary md:text-5xl lg:text-6xl"
-        >
-          What We <em className="italic">Build</em>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mx-auto max-w-2xl text-lg text-secondary"
-        >
-          Digital infrastructure engineered for precision, speed, and scale.
-        </motion.p>
-      </div>
-
-      {/* Alternating Feature Sections */}
-      <div className="space-y-24 lg:space-y-32">
-        {capabilities.map((capability, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 40 }}
+    <section id="services" className="bg-white py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        {/* Section Header */}
+        <div className="mb-16 border-b border-dashed border-line-dark pb-8">
+          <div className="flex items-center gap-4">
+            <span className="text-xs font-medium text-secondary">01</span>
+            <span className="text-xs font-medium uppercase tracking-wider text-secondary">
+              Services
+            </span>
+          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-            className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${
-              index % 2 === 1 ? 'lg:direction-rtl' : ''
-            }`}
+            viewport={{ once: true }}
+            className="mt-4 text-4xl font-medium tracking-tight text-black md:text-5xl"
           >
-            {/* Content */}
-            <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-              <span className="mb-3 inline-block text-sm font-medium uppercase tracking-wider text-accent">
-                {capability.subtitle}
-              </span>
-              <h3 className="mb-4 font-serif text-3xl font-normal text-primary md:text-4xl">
-                {capability.title}
-              </h3>
-              <p className="mb-8 text-lg leading-relaxed text-secondary">
-                {capability.description}
-              </p>
+            What We Build
+          </motion.h2>
+        </div>
 
-              {/* Feature Tags */}
-              <div className="mb-8 flex flex-wrap gap-3">
-                {capability.features.map((feature, i) => (
-                  <span
-                    key={i}
-                    className="rounded-full border border-line/30 bg-bg-card px-4 py-2 text-sm text-secondary"
-                  >
-                    {feature}
-                  </span>
-                ))}
-              </div>
-
-              {/* Learn More Link */}
-              <a href="#contact" className="btn-link">
-                Learn more
-              </a>
-            </div>
-
-            {/* Visual Element */}
-            <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className={`relative aspect-square overflow-hidden rounded-3xl bg-gradient-to-br ${capability.visual.gradient}`}
+        {/* Services List */}
+        <div className="space-y-0">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.number}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group border-b border-dashed border-line-dark"
+            >
+              <a
+                href={service.link}
+                className="flex flex-col gap-4 py-8 transition-colors hover:bg-gray-50 lg:flex-row lg:items-center lg:gap-12"
               >
-                {/* Grid Pattern */}
-                <div
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(rgba(197,224,99,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(197,224,99,0.05) 1px, transparent 1px)',
-                    backgroundSize: '40px 40px',
-                  }}
-                />
+                {/* Number */}
+                <span className="text-sm font-medium text-secondary lg:w-20">
+                  {service.number}
+                </span>
 
-                {/* Floating Elements */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {capability.visual.icon}
-                </div>
+                {/* Title */}
+                <h3 className="text-2xl font-medium text-black transition-colors group-hover:text-accent lg:w-64">
+                  {service.title}
+                </h3>
 
-                {/* Decorative circles */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-                  className="absolute -right-10 -top-10 h-40 w-40 rounded-full border border-accent/20"
-                />
-                <motion.div
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-                  className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full border border-accent/10"
-                />
+                {/* Description */}
+                <p className="flex-1 text-secondary">
+                  {service.description}
+                </p>
 
-                {/* Corner accent */}
-                <div className="absolute bottom-6 right-6 flex items-center gap-2 rounded-full bg-bg-card/80 px-4 py-2 backdrop-blur-sm border border-line/30">
-                  <div className="h-2 w-2 rounded-full bg-accent" />
-                  <span className="text-xs font-medium text-primary">
-                    {index === 0 ? 'Full Stack' : index === 1 ? 'Blockchain' : 'Integration'}
+                {/* Arrow */}
+                <div className="flex items-center justify-end">
+                  <span className="flex h-10 w-10 items-center justify-center border border-line-dark transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-white">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                   </span>
                 </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        ))}
+              </a>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 flex items-center justify-between"
+        >
+          <p className="text-sm text-secondary">
+            Looking for something specific?
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-black transition-colors hover:text-accent"
+          >
+            See our services
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </motion.div>
       </div>
-    </Section>
+    </section>
   );
 }
