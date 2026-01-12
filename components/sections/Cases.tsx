@@ -1,129 +1,150 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Section } from '@/components/ui/Section';
+
+const helvetica = { fontFamily: 'Helvetica Neue, sans-serif' };
+
+const filters = ['Web 3', 'Web 2'];
 
 const cases = [
   {
+    number: '01',
     title: 'RAVA',
-    category: 'Land Data Platform',
-    description: 'Real-time architecture for asset tokenization.',
-    timeline: '12 days',
-    investment: '$28k',
-    tech: ['Blockchain', 'Smart Contracts', 'Next.js'],
+    category: 'Blockchain',
+    filter: 'Web 3',
   },
   {
+    number: '02',
     title: 'Arena.trade',
-    category: 'Trading Analytics',
-    description: 'Rapid reskin and integration under 10 days.',
-    timeline: '8 days',
-    investment: '$18k',
-    tech: ['Analytics', 'Real-time Data', 'React'],
+    category: 'DeFi',
+    filter: 'Web 3',
   },
   {
+    number: '03',
     title: 'Wantan Clan',
-    category: 'Service Design / UX Ops',
-    description: 'Full digital operation system for a dark kitchen.',
-    timeline: '14 days',
-    investment: '$32k',
-    tech: ['Automation', 'CRM Integration', 'Cloud'],
+    category: 'SaaS',
+    filter: 'Web 2',
+  },
+  {
+    number: '04',
+    title: 'AI Assistant',
+    category: 'LLM',
+    filter: 'Web 2',
   },
 ];
 
 export function Cases() {
+  const [activeFilter, setActiveFilter] = useState('Web 3');
+
+  const filteredCases = cases.filter(c => c.filter === activeFilter);
+
   return (
-    <Section id="cases">
-      <div className="mb-16 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 text-4xl font-medium text-black md:text-5xl lg:text-6xl"
-        >
-          Case <em className="italic">Snapshots</em>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mx-auto max-w-2xl text-lg text-secondary"
-        >
-          Selected projects demonstrating rapid, structured engineering.
-        </motion.p>
-      </div>
+    <section id="cases" className="min-h-screen bg-black px-4 py-20 lg:px-16 lg:py-32">
+      <div className="mx-auto w-full">
+        {/* Header */}
+        <div className="mb-12 flex flex-col justify-between gap-8 lg:mb-16 lg:flex-row lg:items-start">
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap gap-3">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`rounded-none border px-4 py-2 text-sm uppercase tracking-wider transition-all ${
+                  activeFilter === filter
+                    ? 'border-white bg-white text-black'
+                    : 'border-white/30 bg-transparent text-white/60 hover:border-white hover:text-white'
+                }`}
+                style={helvetica}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {cases.map((item, index) => (
-          <motion.article
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ y: -8 }}
-            className="group overflow-hidden border border-line-dark bg-white transition-all duration-300 hover:border-black hover:shadow-lg"
+          {/* Description */}
+          <p
+            className="max-w-sm text-sm leading-relaxed text-white/60 lg:text-right"
+            style={helvetica}
           >
-            {/* Image/Gradient Placeholder */}
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <div className="h-full w-full bg-gradient-to-br from-accent/10 to-accent/5 transition-transform duration-700 group-hover:scale-110" />
+            Vertek.lab es un estudio de producto AI-first especializado en desarrollo de software, diseño de producto y transformación digital.
+          </p>
+        </div>
 
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
-                <span className="translate-y-4 bg-accent px-6 py-3 text-sm font-medium text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                  View Case
+        {/* Projects List */}
+        <div className="flex flex-col">
+          {filteredCases.map((project, index) => (
+            <motion.div
+              key={project.number}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              {/* Project Row */}
+              <div className="group grid cursor-pointer grid-cols-[50px_1fr_auto_30px] items-center gap-4 py-6 transition-all hover:opacity-80 lg:grid-cols-[100px_1fr_auto_50px] lg:gap-8 lg:py-8">
+                {/* Number */}
+                <span
+                  className="text-3xl text-white/40 lg:text-5xl"
+                  style={{ ...helvetica, fontWeight: 200 }}
+                >
+                  {project.number}
+                </span>
+
+                {/* Title */}
+                <h3
+                  className="text-2xl text-white lg:text-5xl"
+                  style={{ ...helvetica, fontWeight: 400 }}
+                >
+                  {project.title}
+                </h3>
+
+                {/* Category */}
+                <span
+                  className="text-xs text-white/50 lg:text-sm"
+                  style={helvetica}
+                >
+                  {project.category}
+                </span>
+
+                {/* Plus Icon */}
+                <span
+                  className="text-xl text-white/40 transition-all group-hover:text-white lg:text-2xl"
+                  style={{ ...helvetica, fontWeight: 200 }}
+                >
+                  +
                 </span>
               </div>
-            </div>
 
-            {/* Content */}
-            <div className="p-8">
-              {/* Category */}
-              <span className="text-xs font-medium uppercase tracking-wider text-accent">
-                {item.category}
-              </span>
+              {/* Dotted Separator */}
+              <div
+                className="h-px w-full"
+                style={{
+                  backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.2) 50%, transparent 50%)',
+                  backgroundSize: '8px 1px',
+                }}
+              />
+            </motion.div>
+          ))}
+        </div>
 
-              {/* Title */}
-              <h3 className="mt-3 text-2xl font-medium text-black transition-colors group-hover:text-accent">
-                {item.title}
-              </h3>
-
-              {/* Description */}
-              <p className="mt-3 text-secondary">{item.description}</p>
-
-              {/* Metrics */}
-              <div className="mt-6 flex items-center gap-6 border-t border-dashed border-line-dark pt-6">
-                <div>
-                  <span className="text-2xl font-medium text-accent">
-                    {item.timeline}
-                  </span>
-                  <span className="ml-2 text-sm text-secondary">delivery</span>
-                </div>
-                <div className="h-8 w-px bg-line-dark" />
-                <div>
-                  <span className="text-2xl font-medium text-black">
-                    {item.investment}
-                  </span>
-                  <span className="ml-2 text-sm text-secondary">investment</span>
-                </div>
-              </div>
-
-              {/* Tech Stack */}
-              <div className="mt-6 flex flex-wrap gap-2">
-                {item.tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="border border-line-dark bg-white px-3 py-1 text-xs text-secondary transition-colors group-hover:border-accent"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.article>
-        ))}
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center pt-12 lg:pt-16"
+        >
+          <a
+            href="/contacto"
+            className="group flex items-center gap-3 border border-white/30 px-8 py-4 text-sm uppercase tracking-wider text-white transition-all hover:border-white hover:bg-white hover:text-black"
+            style={helvetica}
+          >
+            Discutir tu proyecto
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+        </motion.div>
       </div>
-    </Section>
+    </section>
   );
 }

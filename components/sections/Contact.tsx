@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ContactSchema, type ContactFormData } from '@/lib/schemas';
 
+const helvetica = { fontFamily: 'Helvetica Neue, sans-serif' };
+
 export function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
@@ -92,58 +94,90 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-white py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+    <section id="contact" className="min-h-screen bg-white px-4 pt-40 pb-20 lg:px-16 lg:pt-48">
+      <div className="mx-auto w-full">
         {/* Section Header */}
-        <div className="mb-16 border-b border-dashed border-line-dark pb-8">
-          <div className="flex items-center gap-4">
-            <span className="text-xs font-medium text-secondary">04</span>
-            <span className="text-xs font-medium uppercase tracking-wider text-secondary">
-              Contact
-            </span>
-          </div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-4 text-4xl font-medium tracking-tight text-black md:text-5xl"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <p
+            className="text-base text-black/50"
+            style={helvetica}
           >
-            Get in Touch
-          </motion.h2>
-        </div>
+            Contacto
+          </p>
+          <h1
+            className="mt-2 text-4xl text-black md:text-5xl lg:text-6xl"
+            style={{ ...helvetica, fontWeight: 500 }}
+          >
+            Hablemos de tu Proyecto
+          </h1>
+        </motion.div>
+
+        {/* Divider */}
+        <div className="mb-12 h-px w-full bg-black/10" />
 
         <div className="grid gap-16 lg:grid-cols-2">
           {/* Left Column - Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
           >
-            <p className="text-xl text-secondary lg:text-2xl">
-              Have a system to build? Let&apos;s architect it together.
+            <p
+              className="text-xl text-black/70 lg:text-2xl"
+              style={helvetica}
+            >
+              ¿Tienes un proyecto en mente? Conversemos sobre cómo podemos colaborar.
             </p>
 
             {/* Contact Info */}
             <div className="mt-12 space-y-6">
-              <div className="border-b border-dashed border-line-dark pb-6">
-                <span className="text-xs font-medium uppercase tracking-wider text-secondary">
-                  Email
+              <div className="border-b border-black/10 pb-6">
+                <span
+                  className="text-sm uppercase tracking-wider text-black/50"
+                  style={helvetica}
+                >
+                  Correo
                 </span>
-                <a href="mailto:contact@vertek.lab" className="mt-2 block text-lg font-medium text-black hover:text-accent">
+                <a
+                  href="mailto:contact@vertek.lab"
+                  className="mt-2 block text-lg text-black transition-colors hover:text-[#5D04F6]"
+                  style={{ ...helvetica, fontWeight: 500 }}
+                >
                   contact@vertek.lab
                 </a>
               </div>
-              <div className="border-b border-dashed border-line-dark pb-6">
-                <span className="text-xs font-medium uppercase tracking-wider text-secondary">
-                  Response Time
+              <div className="border-b border-black/10 pb-6">
+                <span
+                  className="text-sm uppercase tracking-wider text-black/50"
+                  style={helvetica}
+                >
+                  Tiempo de Respuesta
                 </span>
-                <p className="mt-2 text-lg text-black">Within 24 hours</p>
+                <p
+                  className="mt-2 text-lg text-black"
+                  style={helvetica}
+                >
+                  En menos de 24 horas
+                </p>
               </div>
               <div className="pb-6">
-                <span className="text-xs font-medium uppercase tracking-wider text-secondary">
-                  Location
+                <span
+                  className="text-sm uppercase tracking-wider text-black/50"
+                  style={helvetica}
+                >
+                  Ubicación
                 </span>
-                <p className="mt-2 text-lg text-black">Latin America & Global</p>
+                <p
+                  className="mt-2 text-lg text-black"
+                  style={helvetica}
+                >
+                  Latinoamérica y Global
+                </p>
               </div>
             </div>
           </motion.div>
@@ -151,9 +185,8 @@ export function Contact() {
           {/* Right Column - Form */}
           <motion.form
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
             onSubmit={handleSubmit}
             className="space-y-6"
           >
@@ -161,9 +194,10 @@ export function Contact() {
             <div>
               <label
                 htmlFor="name"
-                className="text-xs font-medium uppercase tracking-wider text-secondary"
+                className="text-sm uppercase tracking-wider text-black/50"
+                style={helvetica}
               >
-                Name *
+                Nombre *
               </label>
               <input
                 type="text"
@@ -172,11 +206,12 @@ export function Contact() {
                 value={formData.name}
                 onChange={handleChange}
                 aria-invalid={!!errors.name}
-                placeholder="Your name"
-                className="mt-2 w-full border-0 border-b border-line-dark bg-transparent py-3 text-black placeholder-secondary/50 transition-colors focus:border-accent focus:outline-none"
+                placeholder="Tu nombre"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
+                style={helvetica}
               />
               {errors.name && (
-                <p className="mt-2 text-sm text-red-600" role="alert">
+                <p className="mt-2 text-sm text-red-600" role="alert" style={helvetica}>
                   {errors.name}
                 </p>
               )}
@@ -186,9 +221,10 @@ export function Contact() {
             <div>
               <label
                 htmlFor="email"
-                className="text-xs font-medium uppercase tracking-wider text-secondary"
+                className="text-sm uppercase tracking-wider text-black/50"
+                style={helvetica}
               >
-                Email *
+                Correo electrónico *
               </label>
               <input
                 type="email"
@@ -197,11 +233,12 @@ export function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 aria-invalid={!!errors.email}
-                placeholder="your@email.com"
-                className="mt-2 w-full border-0 border-b border-line-dark bg-transparent py-3 text-black placeholder-secondary/50 transition-colors focus:border-accent focus:outline-none"
+                placeholder="tu@correo.com"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
+                style={helvetica}
               />
               {errors.email && (
-                <p className="mt-2 text-sm text-red-600" role="alert">
+                <p className="mt-2 text-sm text-red-600" role="alert" style={helvetica}>
                   {errors.email}
                 </p>
               )}
@@ -211,9 +248,10 @@ export function Contact() {
             <div>
               <label
                 htmlFor="company"
-                className="text-xs font-medium uppercase tracking-wider text-secondary"
+                className="text-sm uppercase tracking-wider text-black/50"
+                style={helvetica}
               >
-                Company
+                Empresa
               </label>
               <input
                 type="text"
@@ -221,8 +259,9 @@ export function Contact() {
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                placeholder="Your company"
-                className="mt-2 w-full border-0 border-b border-line-dark bg-transparent py-3 text-black placeholder-secondary/50 transition-colors focus:border-accent focus:outline-none"
+                placeholder="Tu empresa"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
+                style={helvetica}
               />
             </div>
 
@@ -230,20 +269,22 @@ export function Contact() {
             <div>
               <label
                 htmlFor="projectType"
-                className="text-xs font-medium uppercase tracking-wider text-secondary"
+                className="text-sm uppercase tracking-wider text-black/50"
+                style={helvetica}
               >
-                Project Type *
+                Tipo de Proyecto *
               </label>
               <select
                 id="projectType"
                 name="projectType"
                 value={formData.projectType}
                 onChange={handleChange}
-                className="mt-2 w-full border-0 border-b border-line-dark bg-transparent py-3 text-black transition-colors focus:border-accent focus:outline-none"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black transition-colors focus:border-[#5D04F6] focus:outline-none"
+                style={helvetica}
               >
-                <option value="mvp">MVP System (5-7 days, from $15k)</option>
-                <option value="full">Full System (2-4 weeks, from $35k)</option>
-                <option value="enterprise">Enterprise (Custom timeline & pricing)</option>
+                <option value="mvp">Sistema MVP (5-7 días)</option>
+                <option value="full">Sistema Completo (2-4 semanas)</option>
+                <option value="enterprise">Solución Empresarial</option>
               </select>
             </div>
 
@@ -251,9 +292,10 @@ export function Contact() {
             <div>
               <label
                 htmlFor="message"
-                className="text-xs font-medium uppercase tracking-wider text-secondary"
+                className="text-sm uppercase tracking-wider text-black/50"
+                style={helvetica}
               >
-                Message *
+                Cuéntanos sobre tu proyecto *
               </label>
               <textarea
                 id="message"
@@ -262,11 +304,12 @@ export function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 aria-invalid={!!errors.message}
-                placeholder="Tell us about your project..."
-                className="mt-2 w-full border-0 border-b border-line-dark bg-transparent py-3 text-black placeholder-secondary/50 transition-colors focus:border-accent focus:outline-none"
+                placeholder="Cuéntanos sobre tu proyecto..."
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
+                style={helvetica}
               />
               {errors.message && (
-                <p className="mt-2 text-sm text-red-600" role="alert">
+                <p className="mt-2 text-sm text-red-600" role="alert" style={helvetica}>
                   {errors.message}
                 </p>
               )}
@@ -280,51 +323,75 @@ export function Contact() {
                 name="consent"
                 checked={formData.consent}
                 onChange={handleChange}
-                className="mt-1 h-4 w-4 border-line-dark text-accent focus:ring-accent"
+                className="mt-1 h-4 w-4 accent-[#5D04F6]"
               />
-              <label htmlFor="consent" className="text-sm text-secondary">
-                I agree to be contacted by VERTEK.lab regarding my inquiry. *
+              <label
+                htmlFor="consent"
+                className="text-sm text-black/60"
+                style={helvetica}
+              >
+                Acepto ser contactado por VERTEK.lab respecto a mi consulta. *
               </label>
             </div>
             {errors.consent && (
-              <p className="text-sm text-red-600" role="alert">
+              <p className="text-sm text-red-600" role="alert" style={helvetica}>
                 {errors.consent}
               </p>
             )}
 
-            {/* Submit Button */}
+            {/* Submit Button - Chamfered corners */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex w-full items-center justify-center gap-3 bg-black px-8 py-4 text-sm font-medium uppercase tracking-wider text-white transition-all hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+              className="group relative mt-4 h-[56px] w-full transition-all disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {isSubmitting ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="h-5 w-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                  </svg>
-                  Sending...
-                </span>
-              ) : (
-                <>
-                  Send Message
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </>
-              )}
+              <svg
+                className="absolute inset-0 h-full w-full"
+                viewBox="0 0 400 56"
+                fill="none"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0.5 0.5H391.5L399.5 8.5V55.5H8.5L0.5 47.5V0.5Z"
+                  className="fill-black stroke-black transition-all group-hover:fill-[#5D04F6] group-hover:stroke-[#5D04F6]"
+                  strokeWidth="1"
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center gap-3">
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2 text-white" style={helvetica}>
+                    <svg className="h-5 w-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                    Enviando...
+                  </span>
+                ) : (
+                  <>
+                    <span className="text-base text-white" style={helvetica}>Enviar mensaje</span>
+                    <span className="text-white">→</span>
+                  </>
+                )}
+              </div>
             </button>
 
             {/* Status Messages */}
             {submitStatus === 'success' && (
-              <p className="border border-accent/30 bg-accent/10 p-4 text-center text-sm text-black" role="status">
-                Thank you! We&apos;ll be in touch within 24 hours.
+              <p
+                className="border border-[#5D04F6]/30 bg-[#5D04F6]/10 p-4 text-center text-sm text-black"
+                role="status"
+                style={helvetica}
+              >
+                Mensaje recibido. Te contactaremos en menos de 24 horas.
               </p>
             )}
             {submitStatus === 'error' && (
-              <p className="border border-red-500/30 bg-red-500/10 p-4 text-center text-sm text-red-600" role="alert">
-                Something went wrong. Please try again.
+              <p
+                className="border border-red-500/30 bg-red-500/10 p-4 text-center text-sm text-red-600"
+                role="alert"
+                style={helvetica}
+              >
+                Algo salió mal. Por favor, intenta de nuevo.
               </p>
             )}
           </motion.form>

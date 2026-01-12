@@ -9,41 +9,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Theme-aware colors using CSS variables
-        bg: 'var(--bg)',
-        'bg-dark': 'var(--bg-dark)',
-        'bg-card': 'var(--bg-card)',
-        'bg-elevated': 'var(--bg-elevated)',
+        // Core palette - Only 3 colors + gray
+        purple: '#5D04F6',
 
-        // Text colors
-        primary: 'var(--primary)',
-        secondary: 'var(--secondary)',
-        'secondary-light': 'var(--secondary-light)',
+        // Semantic aliases
+        accent: '#5D04F6',
+        primary: '#000000',
+        secondary: 'rgba(0, 0, 0, 0.6)',
 
-        // Accent - Salmon/Coral (Webisoft style)
-        accent: '#F03671',
-        'accent-light': '#F45A8D',
-        'accent-dark': '#D42A5F',
+        // Backgrounds
+        bg: '#ffffff',
+        'bg-dark': '#f5f5f5',
 
         // Borders
-        line: 'var(--line)',
-        'line-dark': 'var(--line-dark)',
-        'line-light': 'var(--line-light)',
-
-        // Hover states
-        hover: 'var(--hover)',
+        line: 'rgba(0, 0, 0, 0.1)',
+        'line-dark': 'rgba(0, 0, 0, 0.2)',
       },
       borderColor: {
-        DEFAULT: '#e5e5e5',
+        DEFAULT: 'rgba(0, 0, 0, 0.1)',
       },
       backgroundImage: {
         'gradient-light': 'linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%)',
-        'gradient-accent': 'linear-gradient(135deg, #F03671 0%, #F45A8D 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #5D04F6 0%, #7B3FF2 100%)',
+        'gradient-purple': 'linear-gradient(135deg, #5D04F6 0%, #7B3FF2 100%)',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        serif: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        display: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
       },
       maxWidth: {
         container: '1280px',

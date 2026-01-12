@@ -5,9 +5,9 @@ export default function NotFound() {
     <div className="flex min-h-screen items-center justify-center bg-bg px-6">
       <div className="text-center">
         <h1 className="mb-4 text-6xl font-bold text-electric">404</h1>
-        <h2 className="mb-6 text-2xl font-semibold text-white">Page Not Found</h2>
+        <h2 className="mb-6 text-2xl font-semibold text-white">Página no encontrada</h2>
         <p className="mb-8 text-concrete">
-          The page you're looking for doesn't exist or has been moved.
+          Parece que esta página no existe o fue movida.
         </p>
         <Link
           href="/"
@@ -24,7 +24,7 @@ export default function NotFound() {
           >
             <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          Back to Home
+          Volver al Inicio
         </Link>
       </div>
     </div>

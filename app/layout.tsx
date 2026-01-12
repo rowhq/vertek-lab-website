@@ -1,35 +1,22 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/ui/Header';
 import { Footer } from '@/components/ui/Footer';
 import { LoadingScreen } from '@/components/ui/LoadingScreen';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-});
-
 export const metadata: Metadata = {
-  title: 'Vertek.lab — The Architecture of Intelligent Systems',
+  title: 'Vertek.lab — Estudio de Producto AI-First',
   description:
-    'We design and engineer intelligent infrastructures — fast, modular, and built to scale. AI-First engineering studio.',
+    'Diseño y desarrollo de productos digitales con IA. MVPs en días, plataformas en semanas. Apps, SaaS, marketplaces.',
   keywords: [
-    'AI-First',
-    'Engineering Studio',
-    'Intelligent Systems',
-    'Enterprise Integration',
-    'Systems Architecture',
-    'Software Development',
+    'desarrollo de productos',
+    'MVP',
+    'aplicaciones web',
+    'aplicaciones móviles',
+    'SaaS',
+    'marketplaces',
+    'diseño de producto',
+    'desarrollo AI-First',
   ],
   authors: [{ name: 'Vertek.lab' }],
   creator: 'Vertek.lab',
@@ -40,26 +27,26 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'es_PE',
     url: 'https://vertek.lab',
-    title: 'Vertek.lab — The Architecture of Intelligent Systems',
+    title: 'Vertek.lab — Estudio de Producto AI-First',
     description:
-      'We design and engineer intelligent infrastructures — fast, modular, and built to scale.',
+      'Diseño y desarrollo de productos digitales con IA. MVPs en días, plataformas en semanas. Apps, SaaS, marketplaces.',
     siteName: 'Vertek.lab',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Vertek.lab - AI-First Engineering Studio',
+        alt: 'Vertek.lab - Estudio de Producto AI-First',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vertek.lab — The Architecture of Intelligent Systems',
+    title: 'Vertek.lab — Estudio de Producto AI-First',
     description:
-      'We design and engineer intelligent infrastructures — fast, modular, and built to scale.',
+      'Diseño y desarrollo de productos digitales con IA. MVPs en días, plataformas en semanas. Apps, SaaS, marketplaces.',
     images: ['/og-image.png'],
   },
 };
@@ -75,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -88,7 +75,7 @@ export default function RootLayout({
 
         {/* Skip to main content for accessibility */}
         <a href="#main-content" className="skip-to-content">
-          Skip to main content
+          Saltar al contenido principal
         </a>
 
         <Header />

@@ -4,32 +4,29 @@
 
 @layer base {
   /* ========================================
-     LIGHT THEME - Webisoft Style
+     DESIGN SYSTEM - 3 Colors Only
+     Purple (#5D04F6) + Black + White
      ======================================== */
   :root {
-    /* Background palette - clean whites */
+    /* Core Colors */
+    --purple: #5D04F6;
+    --black: #000000;
+    --white: #ffffff;
+
+    /* Backgrounds */
     --bg: #ffffff;
     --bg-dark: #f5f5f5;
-    --bg-card: #fafafa;
-    --bg-elevated: #f0f0f0;
 
-    /* Text colors */
+    /* Text */
     --primary: #000000;
-    --secondary: #666666;
-    --secondary-light: #999999;
+    --secondary: rgba(0, 0, 0, 0.6);
 
-    /* Accent - Salmon/Coral (Webisoft style) */
-    --accent: #F03671;
-    --accent-light: #F45A8D;
-    --accent-dark: #D42A5F;
+    /* Accent = Purple */
+    --accent: #5D04F6;
 
     /* Borders */
-    --line: #e5e5e5;
-    --line-dark: #cccccc;
-    --line-light: #f0f0f0;
-
-    /* Hover */
-    --hover: #f5f5f5;
+    --line: rgba(0, 0, 0, 0.1);
+    --line-dark: rgba(0, 0, 0, 0.2);
 
     /* Header */
     --header-bg: rgba(255, 255, 255, 0.95);
@@ -44,7 +41,8 @@
   }
 
   body {
-    @apply antialiased font-sans;
+    @apply antialiased;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: var(--bg);
     color: var(--primary);
     min-height: 100vh;
@@ -140,13 +138,13 @@
     @apply translate-x-0.5 -translate-y-0.5;
   }
 
-  /* Accent Button - Salmon background */
+  /* Accent Button - Purple background */
   .btn-accent {
     @apply inline-flex items-center justify-center gap-2;
-    @apply rounded-none bg-accent px-8 py-4;
+    @apply rounded-none bg-purple px-8 py-4;
     @apply text-sm font-medium uppercase tracking-wider text-white;
     @apply transition-all duration-300;
-    @apply hover:bg-accent-dark;
+    @apply hover:opacity-90;
   }
 
   .btn-accent-sm {
@@ -196,9 +194,9 @@
     @apply hover:-translate-y-1 hover:border-accent hover:shadow-xl;
   }
 
-  /* Card with salmon background */
+  /* Card with purple background */
   .card-accent {
-    @apply bg-accent text-white;
+    @apply bg-purple text-white;
     @apply transition-all duration-300;
   }
 
@@ -261,11 +259,11 @@
   }
 
   /* ========================================
-     FOOTER - Salmon CTA Section
+     FOOTER - Purple CTA Section
      ======================================== */
 
   .footer-cta {
-    @apply bg-accent text-black;
+    @apply bg-purple text-white;
   }
 
   .footer-cta-title {
@@ -278,9 +276,9 @@
     text-wrap: balance;
   }
 
-  /* Text gradient - Salmon accent */
+  /* Text gradient - Purple accent */
   .text-gradient-accent {
-    @apply bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-purple to-purple bg-clip-text text-transparent;
   }
 
   /* Marquee container */
@@ -309,13 +307,13 @@
     );
   }
 
-  /* Salmon glow effects */
+  /* Purple glow effects */
   .glow-accent {
-    box-shadow: 0 0 40px rgba(240, 54, 113, 0.2);
+    box-shadow: 0 0 40px rgba(93, 4, 246, 0.2);
   }
 
   .glow-accent-sm {
-    box-shadow: 0 0 20px rgba(240, 54, 113, 0.15);
+    box-shadow: 0 0 20px rgba(93, 4, 246, 0.15);
   }
 
   /* Reduced motion */

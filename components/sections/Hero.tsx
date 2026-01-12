@@ -1,102 +1,109 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+
+const services = [
+  'Diseño de Producto',
+  'Desarrollo de Software',
+  'Inteligencia Artificial',
+];
 
 export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-white"
+      className="relative min-h-screen overflow-hidden bg-[#5D04F6]"
     >
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 blueprint-grid opacity-50" />
-
       {/* Main Content */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-32 lg:px-12">
-        {/* Technical identifier */}
+      <div className="relative z-10 flex min-h-screen flex-col px-4 pt-36 lg:px-6 lg:pt-48">
+        {/* Services List - Left aligned */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 flex items-center gap-4"
-        >
-          <span className="text-xs font-medium text-secondary">/0026</span>
-          <span className="text-xs font-medium uppercase tracking-wider text-secondary">
-            Engineering_
-          </span>
-        </motion.div>
-
-        {/* Main Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="max-w-4xl text-5xl font-medium leading-[1.1] tracking-tight text-black md:text-6xl lg:text-7xl"
-        >
-          An Elite Team of{' '}
-          <span className="text-accent">Software Engineers</span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-8 max-w-xl text-lg text-secondary md:text-xl"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col gap-1 lg:gap-2"
         >
-          We design and build intelligent systems — fast, modular, and built to scale.
-          AI-First engineering for Web2 & Web3.
-        </motion.p>
+          {services.map((service, index) => (
+            <motion.span
+              key={service}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+              className="text-base font-normal leading-relaxed text-[#E6E6E6] lg:text-lg"
+            >
+              {service}
+            </motion.span>
+          ))}
+        </motion.div>
 
-        {/* Location tag */}
+        {/* Large "vertek" logo */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-6 flex items-center gap-2"
+          transition={{ duration: 1.2, delay: 0.8 }}
+          className="mt-auto pb-8 lg:pb-12"
         >
-          <span className="text-xs font-medium text-secondary">LATAM/GLOBAL</span>
-        </motion.div>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-12 flex flex-col items-start gap-4 sm:flex-row"
-        >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-black px-8 py-4 text-sm font-medium uppercase tracking-wider text-white transition-all hover:bg-gray-800"
-          >
-            Start a Project
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-          <a
-            href="#services"
-            className="inline-flex items-center gap-2 border-2 border-black px-8 py-4 text-sm font-medium uppercase tracking-wider text-black transition-all hover:bg-black hover:text-white"
-          >
-            Explore
-          </a>
+          <Image
+            src="/images/vertek-logo-large.svg"
+            alt="vertek"
+            width={706}
+            height={164}
+            className="w-[50vw] lg:w-[45vw] h-auto select-none"
+            priority
+          />
         </motion.div>
       </div>
 
-      {/* Side decoration - vertical text */}
+      {/* Right side: Vertical line with scroll indicator */}
+      <motion.a
+        href="#build"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: [0, 1, 1, 0.7, 1],
+        }}
+        transition={{
+          opacity: { delay: 0.5, duration: 2, repeat: Infinity, repeatDelay: 1 }
+        }}
+        className="absolute bottom-8 right-12 hidden lg:block group"
+        aria-label="Scroll down"
+      >
+        <svg
+          width="31"
+          height="345"
+          viewBox="0 0 31 347"
+          fill="none"
+        >
+          <path d="M15.3535 0V345.5" stroke="#E6E6E6" />
+          <path d="M30.3535 330.5L15.3535 345.5L0.353546 330.5" stroke="#E6E6E6" />
+        </svg>
+      </motion.a>
+
+      {/* Mobile scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-24 right-8 hidden -rotate-90 transform lg:block"
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 lg:hidden"
       >
-        <span className="text-xs font-medium uppercase tracking-[0.3em] text-secondary">
-          Scroll to explore
-        </span>
+        <motion.a
+          href="#build"
+          className="flex flex-col items-center"
+          aria-label="Scroll down"
+        >
+          <motion.svg
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            width="24"
+            height="12"
+            viewBox="0 0 30.7071 16.0607"
+            fill="none"
+            className="text-[#e6e6e6]"
+          >
+            <path d="M30.3536 0.353553L15.3536 15.3536L0.353553 0.353553" stroke="currentColor" />
+          </motion.svg>
+        </motion.a>
       </motion.div>
-
-      {/* Bottom border decoration */}
-      <div className="absolute bottom-0 left-0 right-0 border-b border-dashed border-line-dark" />
     </section>
   );
 }
