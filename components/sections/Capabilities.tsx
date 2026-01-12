@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 function ProductDesignGraphic() {
   // 4 etapas en diagonal: abajo-izquierda → arriba-derecha (dentro del marco 20-180)
   const stages = [
-    { x: 40, y: 165 },   // 1. Punto (idea)
-    { x: 70, y: 135 },   // 2. Círculo (concepto)
-    { x: 105, y: 100 },  // 3. Wireframe
-    { x: 145, y: 60 },   // 4. Producto final (dentro del marco)
+    { x: 45, y: 160 },   // 1. Punto (idea)
+    { x: 72, y: 128 },   // 2. Círculo (concepto)
+    { x: 100, y: 96 },   // 3. Wireframe
+    { x: 132, y: 62 },   // 4. Producto final (más adentro)
   ];
 
   return (
@@ -106,9 +106,9 @@ function ProductDesignGraphic() {
           transition={{ duration: 0.2, delay: 0.85 }}
         />
 
-        {/* Etapa 4: Forma final refinada (producto) - 38x38 */}
+        {/* Etapa 4: Forma final refinada (producto) - 34x34 */}
         <motion.rect
-          x={stages[3].x - 19} y={stages[3].y - 19} width="38" height="38"
+          x={stages[3].x - 17} y={stages[3].y - 17} width="34" height="34"
           stroke="#5D04F6" strokeWidth="1" fill="#5D04F6" fillOpacity="0.1" rx="3"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
@@ -116,7 +116,7 @@ function ProductDesignGraphic() {
           transition={{ duration: 0.3, delay: 0.9 }}
         />
         <motion.rect
-          x={stages[3].x - 14} y={stages[3].y - 13} width="28" height="7"
+          x={stages[3].x - 12} y={stages[3].y - 11} width="24" height="6"
           fill="#5D04F6" fillOpacity="0.3" rx="1"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
@@ -124,7 +124,7 @@ function ProductDesignGraphic() {
           transition={{ duration: 0.2, delay: 1 }}
         />
         <motion.rect
-          x={stages[3].x - 14} y={stages[3].y - 2} width="18" height="5"
+          x={stages[3].x - 12} y={stages[3].y - 1} width="16" height="5"
           fill="#5D04F6" fillOpacity="0.2" rx="1"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
@@ -132,7 +132,7 @@ function ProductDesignGraphic() {
           transition={{ duration: 0.2, delay: 1.05 }}
         />
         <motion.rect
-          x={stages[3].x - 14} y={stages[3].y + 6} width="12" height="5"
+          x={stages[3].x - 12} y={stages[3].y + 7} width="10" height="5"
           fill="#5D04F6" rx="1"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
@@ -160,7 +160,7 @@ function ProductDesignGraphic() {
 
         {/* Pulso sutil en el producto final */}
         <motion.rect
-          x={stages[3].x - 19} y={stages[3].y - 19} width="38" height="38"
+          x={stages[3].x - 17} y={stages[3].y - 17} width="34" height="34"
           stroke="#5D04F6" strokeWidth="1" fill="none" rx="3"
           initial={{ scale: 1, opacity: 0.3 }}
           animate={{ scale: 1.5, opacity: 0 }}
