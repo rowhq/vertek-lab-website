@@ -3,6 +3,9 @@ import { ContactSchema } from '@/lib/schemas';
 
 export const runtime = 'edge';
 
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const TO_EMAIL = 'ricardo@rowship.com';
+
 export async function POST(req: Request) {
   try {
     const json = await req.json();
@@ -10,22 +13,47 @@ export async function POST(req: Request) {
     // Validate with Zod
     const data = ContactSchema.parse(json);
 
-    // TODO: Implement actual functionality:
-    // 1. Verify reCAPTCHA token
-    // 2. Save to Supabase
-    // 3. Send email via Resend
-    // 4. Implement rate limiting
+    // Send email via Resend
+    if (!RESEND_API_KEY) {
+      console.error('RESEND_API_KEY not configured');
+      return NextResponse.json({ ok: false, error: 'email_not_configured' }, { status: 500 });
+    }
 
-    // For now, just log and return success
-    console.log('Contact form submission:', {
-      name: data.name,
-      email: data.email,
-      company: data.company,
-      message: data.message.substring(0, 50) + '...',
+    const projectTypeLabels: Record<string, string> = {
+      mvp: 'Sistema MVP (5-7 días)',
+      full: 'Sistema Completo (2-4 semanas)',
+      enterprise: 'Solución Empresarial',
+    };
+
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'VERTEK.lab <noreply@vertek.es>',
+        to: [TO_EMAIL],
+        reply_to: data.email,
+        subject: `[VERTEK] Nuevo contacto: ${data.name}`,
+        html: `
+          <h2>Nuevo mensaje de contacto</h2>
+          <p><strong>Nombre:</strong> ${data.name}</p>
+          <p><strong>Email:</strong> ${data.email}</p>
+          <p><strong>Empresa:</strong> ${data.company || 'No especificada'}</p>
+          <p><strong>Tipo de proyecto:</strong> ${projectTypeLabels[data.projectType] || data.projectType}</p>
+          <hr />
+          <p><strong>Mensaje:</strong></p>
+          <p>${data.message.replace(/\n/g, '<br />')}</p>
+        `,
+      }),
     });
 
-    // Simulate async operation
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    if (!emailResponse.ok) {
+      const errorData = await emailResponse.json();
+      console.error('Resend error:', errorData);
+      return NextResponse.json({ ok: false, error: 'email_send_failed' }, { status: 500 });
+    }
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error: any) {
