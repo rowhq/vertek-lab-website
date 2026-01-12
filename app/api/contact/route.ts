@@ -4,7 +4,7 @@ import { ContactSchema } from '@/lib/schemas';
 export const runtime = 'edge';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const TO_EMAIL = 'ricardo@rowship.com';
+const TO_EMAIL = 'contacto@vertek.es';
 
 export async function POST(req: Request) {
   try {
