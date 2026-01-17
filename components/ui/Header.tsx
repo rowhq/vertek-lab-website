@@ -103,7 +103,7 @@ function SidebarMenu({
               </svg>
 
               {/* Content */}
-              <div className="relative z-10 flex h-[min(716px,calc(100vh-32px))] flex-col justify-between overflow-y-auto">
+              <div className="relative z-10 flex h-[min(600px,calc(100vh-48px))] flex-col justify-between overflow-y-auto">
                 {/* Top section */}
                 <div>
                   {/* Header - altura condicional según scroll */}
@@ -292,7 +292,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 bg-transparent transition-all duration-300">
+    <header className="fixed left-0 right-0 top-0 z-50 bg-transparent transition-all duration-300" style={{ paddingTop: 'max(0px, env(safe-area-inset-top))' }}>
       <div className="flex h-auto items-stretch justify-between p-4">
         {/* Left: Card with Logo + Text + Hamburger */}
         <div className={`relative w-auto max-w-[463px] lg:w-[463px] transition-all duration-300 ${

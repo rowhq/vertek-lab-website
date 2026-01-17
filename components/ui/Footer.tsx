@@ -135,14 +135,14 @@ export function Footer() {
               </p>
 
               {/* Social Links */}
-              <div className="mt-6 flex items-center gap-4">
+              <div className="mt-6 flex items-center gap-2">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-secondary transition-colors hover:text-accent active:text-accent"
+                    className="p-2 -m-2 text-secondary transition-colors hover:text-accent active:text-accent"
                     aria-label={social.label}
                   >
                     {social.icon}
@@ -161,7 +161,7 @@ export function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-base sm:text-sm text-secondary transition-colors hover:text-black active:text-black"
+                      className="text-base text-secondary transition-colors hover:text-black active:text-black"
                     >
                       {link.label}
                     </a>
@@ -180,7 +180,7 @@ export function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-base sm:text-sm text-secondary transition-colors hover:text-black active:text-black"
+                      className="text-base text-secondary transition-colors hover:text-black active:text-black"
                     >
                       {link.label}
                     </a>
@@ -197,10 +197,10 @@ export function Footer() {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="mailto:contact@vertek.lab"
-                    className="text-base sm:text-sm text-secondary transition-colors hover:text-black active:text-black"
+                    href="mailto:contacto@vertek.es"
+                    className="text-base text-secondary transition-colors hover:text-black active:text-black"
                   >
-                    contact@vertek.lab
+                    contacto@vertek.es
                   </a>
                 </li>
                 <li className="text-sm text-secondary">Latinoamerica y Global</li>

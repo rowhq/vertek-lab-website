@@ -38,6 +38,7 @@
 
   html {
     @apply scroll-smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -46,6 +47,7 @@
     background-color: var(--bg);
     color: var(--primary);
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   /* Skip to content link for accessibility */

@@ -13,7 +13,7 @@ function ProductDesignGraphic() {
   ];
 
   return (
-    <div className="flex h-[180px] w-[180px] sm:h-[220px] sm:w-[220px] md:h-[250px] md:w-[250px] lg:h-[280px] lg:w-[280px] items-center justify-center">
+    <div className="flex h-[150px] w-[150px] sm:h-[180px] sm:w-[180px] md:h-[220px] md:w-[220px] lg:h-[280px] lg:w-[280px] items-center justify-center">
       <svg viewBox="0 0 200 200" className="h-full w-full">
         {/* Marco */}
         <motion.rect
@@ -184,7 +184,7 @@ function SoftwareDevGraphic() {
   ];
 
   return (
-    <div className="flex h-[180px] w-[180px] sm:h-[220px] sm:w-[220px] md:h-[250px] md:w-[250px] lg:h-[280px] lg:w-[280px] items-center justify-center">
+    <div className="flex h-[150px] w-[150px] sm:h-[180px] sm:w-[180px] md:h-[220px] md:w-[220px] lg:h-[280px] lg:w-[280px] items-center justify-center">
       <svg viewBox="0 0 200 200" className="h-full w-full">
         {/* Marco */}
         <motion.rect
@@ -299,7 +299,7 @@ function AIGraphic() {
   const orbitalAngles = [0, 60, 120, 180, 240, 300];
 
   return (
-    <div className="flex h-[180px] w-[180px] sm:h-[220px] sm:w-[220px] md:h-[250px] md:w-[250px] lg:h-[280px] lg:w-[280px] items-center justify-center">
+    <div className="flex h-[150px] w-[150px] sm:h-[180px] sm:w-[180px] md:h-[220px] md:w-[220px] lg:h-[280px] lg:w-[280px] items-center justify-center">
       <svg viewBox="0 0 200 200" className="h-full w-full">
         {/* Marco */}
         <motion.rect
@@ -464,7 +464,7 @@ const capabilities = [
 
 export function Capabilities() {
   return (
-    <section id="build" className="bg-white px-4 pt-[8.5rem] pb-14 lg:px-16">
+    <section id="build" className="bg-white px-4 pt-20 sm:pt-24 md:pt-28 lg:pt-[8.5rem] pb-12 sm:pb-14 lg:px-16">
       <div className="mx-auto w-full">
         {/* Section Header */}
         <motion.div

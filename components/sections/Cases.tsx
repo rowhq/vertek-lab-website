@@ -82,7 +82,7 @@ export function Cases() {
               transition={{ delay: index * 0.1 }}
             >
               {/* Project Row */}
-              <div className="group grid cursor-pointer grid-cols-[35px_1fr_auto_24px] sm:grid-cols-[45px_1fr_auto_28px] md:grid-cols-[70px_1fr_auto_40px] lg:grid-cols-[100px_1fr_auto_50px] items-center gap-2 sm:gap-3 md:gap-6 lg:gap-8 py-4 sm:py-5 md:py-6 lg:py-8 transition-all hover:opacity-80">
+              <div className="group grid cursor-pointer grid-cols-[40px_1fr_auto_32px] sm:grid-cols-[45px_1fr_auto_32px] md:grid-cols-[70px_1fr_auto_40px] lg:grid-cols-[100px_1fr_auto_50px] items-center gap-2 sm:gap-3 md:gap-6 lg:gap-8 py-4 sm:py-5 md:py-6 lg:py-8 transition-all hover:opacity-80">
                 {/* Number */}
                 <span
                   className="text-xl sm:text-2xl md:text-3xl lg:text-5xl text-white/40"

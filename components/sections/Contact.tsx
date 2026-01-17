@@ -94,7 +94,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="min-h-screen bg-white px-4 pt-40 pb-20 lg:px-16 lg:pt-48">
+    <section id="contact" className="min-h-screen bg-white px-4 pt-28 sm:pt-32 md:pt-40 pb-12 sm:pb-16 md:pb-20 lg:px-16 lg:pt-48">
       <div className="mx-auto w-full">
         {/* Section Header */}
         <motion.div
@@ -323,7 +323,7 @@ export function Contact() {
                 name="consent"
                 checked={formData.consent}
                 onChange={handleChange}
-                className="mt-1 h-6 w-6 sm:h-5 sm:w-5 cursor-pointer accent-[#5D04F6]"
+                className="mt-1 h-5 w-5 cursor-pointer accent-[#5D04F6]"
               />
               <label
                 htmlFor="consent"

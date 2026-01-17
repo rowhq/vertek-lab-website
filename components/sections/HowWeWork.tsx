@@ -88,7 +88,7 @@ function Panel({ step, isActive }: { step: typeof process[0]; isActive: boolean 
 
           {/* Timeline Badge */}
           <span
-            className="inline-block w-fit rounded-full border px-3 py-2 text-base"
+            className="inline-block w-fit rounded-full border px-4 py-2.5 text-base"
             style={{
               ...helvetica,
               borderColor: '#5D04F6',
@@ -260,7 +260,7 @@ function MobileVersion() {
 
                 {/* Timeline Badge */}
                 <span
-                  className="inline-block w-fit rounded-full border px-3 py-2 text-base"
+                  className="inline-block w-fit rounded-full border px-4 py-2.5 text-base"
                   style={{
                     ...helvetica,
                     borderColor: '#5D04F6',
@@ -455,7 +455,7 @@ function HorizontalScrollVersion() {
         {/* Horizontal scrolling panels */}
         <motion.div
           style={{ x }}
-          className="flex flex-1 items-center pb-32 lg:pb-40"
+          className="flex flex-1 items-center pb-32 lg:pb-40 will-change-transform"
         >
           {process.map((step, index) => (
             <Panel

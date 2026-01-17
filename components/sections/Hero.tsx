@@ -49,7 +49,7 @@ export function Hero() {
             alt="vertek"
             width={706}
             height={164}
-            className="w-[70vw] sm:w-[60vw] md:w-[50vw] lg:w-[45vw] h-auto select-none"
+            className="w-[70vw] max-w-xs sm:w-[60vw] sm:max-w-md md:w-[50vw] md:max-w-lg lg:w-[45vw] lg:max-w-none h-auto select-none"
             priority
           />
         </motion.div>
