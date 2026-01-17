@@ -375,7 +375,7 @@ function HorizontalScrollVersion() {
 
     // Calcular posición de scroll objetivo
     const container = containerRef.current;
-    const scrollableHeight = container.offsetHeight * 2; // 300vh - 100vh = 200vh de scroll
+    const scrollableHeight = container.offsetHeight - window.innerHeight;
     const targetScrollY = container.offsetTop + (scrollableHeight * targetProgress);
 
     isSnappingRef.current = true;
