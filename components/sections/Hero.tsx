@@ -16,7 +16,7 @@ export function Hero() {
       className="relative min-h-screen overflow-hidden bg-[#5D04F6]"
     >
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-screen flex-col px-4 pt-24 sm:pt-28 md:pt-32 lg:px-6 lg:pt-48">
+      <div className="relative z-10 flex min-h-screen flex-col px-4 pt-36 sm:pt-40 md:pt-44 lg:px-6 lg:pt-48">
         {/* Services List - Left aligned */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -65,12 +65,11 @@ export function Hero() {
         transition={{
           opacity: { delay: 0.5, duration: 2, repeat: Infinity, repeatDelay: 1 }
         }}
-        className="absolute bottom-8 right-12 hidden lg:block group"
+        className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8 lg:bottom-8 lg:right-12 block group"
         aria-label="Scroll down"
       >
         <svg
-          width="31"
-          height="345"
+          className="w-[20px] h-[200px] sm:w-[25px] sm:h-[280px] lg:w-[31px] lg:h-[345px]"
           viewBox="0 0 31 347"
           fill="none"
         >
@@ -78,32 +77,6 @@ export function Hero() {
           <path d="M30.3535 330.5L15.3535 345.5L0.353546 330.5" stroke="#E6E6E6" />
         </svg>
       </motion.a>
-
-      {/* Mobile scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 lg:hidden"
-      >
-        <motion.a
-          href="#build"
-          className="flex flex-col items-center"
-          aria-label="Scroll down"
-        >
-          <motion.svg
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            width="24"
-            height="12"
-            viewBox="0 0 30.7071 16.0607"
-            fill="none"
-            className="text-[#e6e6e6]"
-          >
-            <path d="M30.3536 0.353553L15.3536 15.3536L0.353553 0.353553" stroke="currentColor" />
-          </motion.svg>
-        </motion.a>
-      </motion.div>
     </section>
   );
 }

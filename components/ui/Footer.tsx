@@ -84,10 +84,34 @@ export function Footer() {
                 Conversemos sobre tu próximo proyecto.
               </p>
             </div>
-            {/* CTA Button - Chamfered corners */}
+            {/* CTA Button - Mobile: Full width, Desktop: Chamfered square */}
+            {/* Mobile Button - Chamfered shape */}
             <a
               href="/contacto"
-              className="group relative h-16 w-16 transition-all lg:h-20 lg:w-20"
+              className="group relative flex h-14 w-full items-center justify-center gap-3 transition-all md:hidden"
+            >
+              <svg
+                className="absolute inset-0 h-full w-full"
+                viewBox="0 0 400 56"
+                fill="none"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0.5 0.5H391.5L399.5 8.5V55.5H8.5L0.5 47.5V0.5Z"
+                  className="fill-transparent stroke-white/40 transition-all group-hover:fill-white group-hover:stroke-white"
+                  strokeWidth="1"
+                />
+              </svg>
+              <span className="relative text-base font-medium text-white transition-colors group-hover:text-purple">
+                Conversemos
+              </span>
+              <span className="relative text-white transition-colors group-hover:text-purple">→</span>
+            </a>
+
+            {/* Desktop Button - Chamfered corners */}
+            <a
+              href="/contacto"
+              className="group relative hidden h-20 w-20 transition-all md:block"
             >
               <svg
                 className="absolute inset-0 h-full w-full"

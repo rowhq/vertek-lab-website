@@ -193,149 +193,71 @@ function TimelineIndicator({ progress, activeIndex }: { progress: number; active
   );
 }
 
-// Mobile Version
+// Mobile Version - Simple Cascade Layout
 function MobileVersion() {
   return (
-    <section id="how-we-work" className="bg-white px-4 py-14">
-      <div className="mx-auto w-full">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-14 flex flex-col gap-4"
-        >
-          <p className="text-base text-black" style={helvetica}>
-            Nuestro Proceso
-          </p>
-          <h2 className="text-4xl text-black md:text-5xl" style={helvetica}>
-            Como Trabajamos
-          </h2>
-          <p className="text-xl text-black" style={helvetica}>
-            Colaboramos con organizaciones construyendo sistemas de alto impacto.
-          </p>
-        </motion.div>
-
-        {/* Process Steps */}
-        <div className="flex flex-col gap-12">
-          {process.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="flex flex-col gap-6"
-            >
-              {/* Giant Number */}
-              <div className="flex items-center">
-                <span
-                  className="text-[60px] sm:text-[70px] leading-none"
-                  style={{
-                    ...helvetica,
-                    fontWeight: 100,
-                  }}
-                >
-                  {step.number}/
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="flex flex-col gap-4">
-                {/* Subtitle - Purple */}
-                <p
-                  className="text-base"
-                  style={{ ...helvetica, color: '#5D04F6' }}
-                >
-                  {step.subtitle}
-                </p>
-
-                {/* Title */}
-                <h3
-                  className="text-2xl text-black"
-                  style={helvetica}
-                >
-                  {step.title}
-                </h3>
-
-                {/* Timeline Badge */}
-                <span
-                  className="inline-block w-fit rounded-full border px-4 py-2.5 text-base"
-                  style={{
-                    ...helvetica,
-                    borderColor: '#5D04F6',
-                    color: '#5D04F6',
-                  }}
-                >
-                  {step.timeline}
-                </span>
-
-                {/* Description */}
-                <p
-                  className="text-base leading-relaxed text-black"
-                  style={helvetica}
-                >
-                  {step.description}
-                </p>
-
-                {/* Details Tags - Black pills */}
-                <div className="flex flex-wrap gap-3 pt-2">
-                  {step.details.map((detail, i) => (
-                    <span
-                      key={i}
-                      className="rounded-full bg-black px-4 py-2 text-sm text-white"
-                      style={helvetica}
-                    >
-                      {detail}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-14 flex flex-col gap-4"
-        >
-          {/* Timeline Line with Dots */}
-          <div className="relative flex items-center justify-between px-2">
-            {/* Line */}
-            <div className="absolute left-4 right-4 top-1/2 h-px -translate-y-1/2" style={{ backgroundColor: '#D1D5DB' }} />
-
-            {/* Dots */}
-            {[0, 1, 2].map((i) => (
-              <div
-                key={i}
-                className="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 bg-white"
-                style={{ borderColor: i === 0 ? '#5D04F6' : '#D1D5DB' }}
-              >
-                <div
-                  className="h-2 w-2 rounded-full"
-                  style={{ backgroundColor: i === 0 ? '#5D04F6' : '#D1D5DB' }}
-                />
-              </div>
-            ))}
-          </div>
-
-          {/* Timeline Labels */}
-          <div className="flex items-center justify-between">
-            {timelineSteps.map((step, index) => (
-              <p
-                key={index}
-                className="text-center text-sm"
-                style={{ ...helvetica, color: '#5D04F6' }}
-              >
-                {step.label}
-              </p>
-            ))}
-          </div>
-        </motion.div>
+    <section id="how-we-work" className="bg-white">
+      {/* Header */}
+      <div className="px-6 pt-16 pb-6">
+        <p className="text-sm text-black" style={helvetica}>
+          Nuestro Proceso
+        </p>
+        <h2 className="text-3xl text-black mt-2" style={helvetica}>
+          Como Trabajamos
+        </h2>
       </div>
+
+      {/* Los 3 procesos en cascada */}
+      {process.map((step, index) => (
+        <div
+          key={index}
+          className="flex flex-col px-6 py-16"
+        >
+          {/* Number grande */}
+          <span
+            className="text-[100px] leading-none"
+            style={{ ...helvetica, fontWeight: 100 }}
+          >
+            {step.number}/
+          </span>
+
+          {/* Title */}
+          <h3 className="text-2xl text-black mt-3" style={helvetica}>
+            {step.title}
+          </h3>
+
+          {/* Subtitle - Purple */}
+          <p className="text-base mt-2" style={{ ...helvetica, color: '#5D04F6' }}>
+            {step.subtitle}
+          </p>
+
+          {/* Timeline badge */}
+          <span
+            className="inline-block w-fit rounded-full border px-4 py-2 text-sm mt-3"
+            style={{ borderColor: '#5D04F6', color: '#5D04F6', ...helvetica }}
+          >
+            {step.timeline}
+          </span>
+
+          {/* Description */}
+          <p className="text-sm leading-relaxed text-black mt-3" style={helvetica}>
+            {step.description}
+          </p>
+
+          {/* Details Tags */}
+          <div className="flex flex-wrap gap-2 mt-4">
+            {step.details.map((detail, i) => (
+              <span
+                key={i}
+                className="rounded-full bg-black px-3 py-1.5 text-xs text-white"
+                style={helvetica}
+              >
+                {detail}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
     </section>
   );
 }

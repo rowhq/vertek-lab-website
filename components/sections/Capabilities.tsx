@@ -13,12 +13,12 @@ function ProductDesignGraphic() {
   ];
 
   return (
-    <div className="flex h-[150px] w-[150px] sm:h-[180px] sm:w-[180px] md:h-[220px] md:w-[220px] lg:h-[280px] lg:w-[280px] items-center justify-center">
+    <div className="flex w-full aspect-square lg:max-w-[280px] items-center justify-center">
       <svg viewBox="0 0 200 200" className="h-full w-full">
         {/* Marco */}
         <motion.rect
           x="20" y="20" width="160" height="160"
-          stroke="black" strokeWidth="1" strokeOpacity="0.1" fill="none" rx="2"
+          stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.1" fill="none" rx="2"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -28,7 +28,7 @@ function ProductDesignGraphic() {
         {/* Línea de progreso diagonal */}
         <motion.line
           x1={stages[0].x} y1={stages[0].y} x2={stages[3].x} y2={stages[3].y}
-          stroke="black" strokeWidth="1" strokeOpacity="0.1"
+          stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.1"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
           viewport={{ once: true }}
@@ -43,7 +43,7 @@ function ProductDesignGraphic() {
             <motion.path
               key={`arrow-${i}`}
               d={`M ${x - 3} ${y + 3} L ${x + 3} ${y - 3} M ${x + 1} ${y - 5} L ${x + 4} ${y - 2} L ${x + 1} ${y + 1}`}
-              stroke="#5D04F6" strokeWidth="1" strokeOpacity="0.4" fill="none"
+              stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.4" fill="none"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -65,7 +65,7 @@ function ProductDesignGraphic() {
         {/* Etapa 2: Círculo (concepto básico) */}
         <motion.circle
           cx={stages[1].x} cy={stages[1].y} r="18"
-          stroke="black" strokeWidth="1" strokeOpacity="0.2" fill="none"
+          stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.2" fill="none"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
@@ -83,7 +83,7 @@ function ProductDesignGraphic() {
         {/* Etapa 3: Cuadrado con estructura (wireframe) - reducido a 30x30 */}
         <motion.rect
           x={stages[2].x - 15} y={stages[2].y - 15} width="30" height="30"
-          stroke="#5D04F6" strokeWidth="1" strokeOpacity="0.5" fill="none"
+          stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.5" fill="none"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
@@ -91,7 +91,7 @@ function ProductDesignGraphic() {
         />
         <motion.line
           x1={stages[2].x - 15} y1={stages[2].y - 5} x2={stages[2].x + 15} y2={stages[2].y - 5}
-          stroke="#5D04F6" strokeWidth="1" strokeOpacity="0.3"
+          stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.3"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
           viewport={{ once: true }}
@@ -99,7 +99,7 @@ function ProductDesignGraphic() {
         />
         <motion.line
           x1={stages[2].x} y1={stages[2].y - 15} x2={stages[2].x} y2={stages[2].y + 15}
-          stroke="#5D04F6" strokeWidth="1" strokeOpacity="0.3"
+          stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.3"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
           viewport={{ once: true }}
@@ -109,7 +109,7 @@ function ProductDesignGraphic() {
         {/* Etapa 4: Forma final refinada (producto) - 34x34 */}
         <motion.rect
           x={stages[3].x - 17} y={stages[3].y - 17} width="34" height="34"
-          stroke="#5D04F6" strokeWidth="1" fill="#5D04F6" fillOpacity="0.1" rx="3"
+          stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="#5D04F6" fillOpacity="0.1" rx="3"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
@@ -161,7 +161,7 @@ function ProductDesignGraphic() {
         {/* Pulso sutil en el producto final */}
         <motion.rect
           x={stages[3].x - 17} y={stages[3].y - 17} width="34" height="34"
-          stroke="#5D04F6" strokeWidth="1" fill="none" rx="3"
+          stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="none" rx="3"
           initial={{ scale: 1, opacity: 0.3 }}
           animate={{ scale: 1.5, opacity: 0 }}
           transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
@@ -184,12 +184,12 @@ function SoftwareDevGraphic() {
   ];
 
   return (
-    <div className="flex h-[150px] w-[150px] sm:h-[180px] sm:w-[180px] md:h-[220px] md:w-[220px] lg:h-[280px] lg:w-[280px] items-center justify-center">
+    <div className="flex w-full aspect-square lg:max-w-[280px] items-center justify-center">
       <svg viewBox="0 0 200 200" className="h-full w-full">
         {/* Marco */}
         <motion.rect
           x="20" y="20" width="160" height="160"
-          stroke="black" strokeWidth="1" strokeOpacity="0.1" fill="none" rx="2"
+          stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.1" fill="none" rx="2"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -202,7 +202,7 @@ function SoftwareDevGraphic() {
             key={`conn-${i}`}
             x1="100" y1="100"
             x2={node.x} y2={node.y}
-            stroke="#5D04F6" strokeWidth="1" strokeOpacity="0.2"
+            stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.2"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
             viewport={{ once: true }}
@@ -211,19 +211,19 @@ function SoftwareDevGraphic() {
         ))}
 
         {/* Conexiones entre nodos externos */}
-        <motion.line x1="50" y1="50" x2="150" y2="50" stroke="black" strokeWidth="1" strokeOpacity="0.08"
+        <motion.line x1="50" y1="50" x2="150" y2="50" stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.08"
           initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.6 }} />
-        <motion.line x1="50" y1="150" x2="150" y2="150" stroke="black" strokeWidth="1" strokeOpacity="0.08"
+        <motion.line x1="50" y1="150" x2="150" y2="150" stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.08"
           initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.65 }} />
-        <motion.line x1="50" y1="50" x2="50" y2="150" stroke="black" strokeWidth="1" strokeOpacity="0.08"
+        <motion.line x1="50" y1="50" x2="50" y2="150" stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.08"
           initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.7 }} />
-        <motion.line x1="150" y1="50" x2="150" y2="150" stroke="black" strokeWidth="1" strokeOpacity="0.08"
+        <motion.line x1="150" y1="50" x2="150" y2="150" stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.08"
           initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 0.3, delay: 0.75 }} />
 
         {/* Nodo central */}
         <motion.circle
           cx="100" cy="100" r="20"
-          stroke="#5D04F6" strokeWidth="1" fill="#5D04F6" fillOpacity="0.1"
+          stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="#5D04F6" fillOpacity="0.1"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
@@ -243,7 +243,7 @@ function SoftwareDevGraphic() {
           <motion.g key={`node-${i}`}>
             <motion.circle
               cx={node.x} cy={node.y} r="14"
-              stroke="black" strokeWidth="1" strokeOpacity="0.15" fill="white"
+              stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.15" fill="white"
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
@@ -284,7 +284,7 @@ function SoftwareDevGraphic() {
         {/* Pulso central */}
         <motion.circle
           cx="100" cy="100" r="20"
-          stroke="#5D04F6" strokeWidth="1" fill="none"
+          stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="none"
           initial={{ scale: 1, opacity: 0.4 }}
           animate={{ scale: 2.5, opacity: 0 }}
           transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
@@ -299,12 +299,12 @@ function AIGraphic() {
   const orbitalAngles = [0, 60, 120, 180, 240, 300];
 
   return (
-    <div className="flex h-[150px] w-[150px] sm:h-[180px] sm:w-[180px] md:h-[220px] md:w-[220px] lg:h-[280px] lg:w-[280px] items-center justify-center">
+    <div className="flex w-full aspect-square lg:max-w-[280px] items-center justify-center">
       <svg viewBox="0 0 200 200" className="h-full w-full">
         {/* Marco */}
         <motion.rect
           x="20" y="20" width="160" height="160"
-          stroke="black" strokeWidth="1" strokeOpacity="0.1" fill="none" rx="2"
+          stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.1" fill="none" rx="2"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -316,7 +316,7 @@ function AIGraphic() {
           <motion.circle
             key={`ring-${i}`}
             cx="100" cy="100" r={r}
-            stroke="#5D04F6" strokeWidth="1" strokeOpacity={0.08 + i * 0.04} fill="none"
+            stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity={0.08 + i * 0.04} fill="none"
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
@@ -331,7 +331,7 @@ function AIGraphic() {
             x1="100" y1="100"
             x2={100 + 75 * Math.cos(angle * Math.PI / 180)}
             y2={100 + 75 * Math.sin(angle * Math.PI / 180)}
-            stroke="black" strokeWidth="1" strokeOpacity="0.05"
+            stroke="black" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.05"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
             viewport={{ once: true }}
@@ -346,7 +346,7 @@ function AIGraphic() {
             cx={100 + 55 * Math.cos(angle * Math.PI / 180)}
             cy={100 + 55 * Math.sin(angle * Math.PI / 180)}
             r="6"
-            stroke="#5D04F6" strokeWidth="1" strokeOpacity="0.4" fill="white"
+            stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.4" fill="white"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
@@ -364,7 +364,7 @@ function AIGraphic() {
               y1={100 + 55 * Math.sin(angle * Math.PI / 180)}
               x2={100 + 55 * Math.cos(nextAngle * Math.PI / 180)}
               y2={100 + 55 * Math.sin(nextAngle * Math.PI / 180)}
-              stroke="#5D04F6" strokeWidth="1" strokeOpacity="0.15"
+              stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" strokeOpacity="0.15"
               initial={{ pathLength: 0 }}
               whileInView={{ pathLength: 1 }}
               viewport={{ once: true }}
@@ -376,7 +376,7 @@ function AIGraphic() {
         {/* Centro - círculo principal */}
         <motion.circle
           cx="100" cy="100" r="18"
-          stroke="#5D04F6" strokeWidth="1" fill="#5D04F6" fillOpacity="0.1"
+          stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="#5D04F6" fillOpacity="0.1"
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
@@ -398,7 +398,7 @@ function AIGraphic() {
           <motion.circle
             key={`pulse-${i}`}
             cx="100" cy="100" r="18"
-            stroke="#5D04F6" strokeWidth="1" fill="none"
+            stroke="#5D04F6" strokeWidth="1" vectorEffect="non-scaling-stroke" fill="none"
             initial={{ scale: 1, opacity: 0.4 }}
             animate={{ scale: 4, opacity: 0 }}
             transition={{ duration: 3, delay: i * 1, repeat: Infinity }}

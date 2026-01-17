@@ -103,7 +103,7 @@ function SidebarMenu({
               </svg>
 
               {/* Content */}
-              <div className="relative z-10 flex h-[min(600px,calc(100vh-48px))] flex-col justify-between overflow-y-auto">
+              <div className="relative z-10 flex h-[calc(100vh-32px)] flex-col justify-between overflow-y-auto">
                 {/* Top section */}
                 <div>
                   {/* Header - altura condicional según scroll */}
@@ -150,7 +150,7 @@ function SidebarMenu({
                   </div>
 
                   {/* Navigation Items */}
-                  <nav className="flex flex-col gap-6 pt-14 pb-12">
+                  <nav className="flex flex-col gap-4 pt-8 pb-8">
                     {/* Top line */}
                     <div className="h-px w-full bg-gray-200" />
 
@@ -293,10 +293,10 @@ export function Header() {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 bg-transparent transition-all duration-300" style={{ paddingTop: 'max(0px, env(safe-area-inset-top))' }}>
-      <div className="flex h-auto items-stretch justify-between p-4">
+      <div className="flex h-auto items-stretch justify-center lg:justify-between p-4">
         {/* Left: Card with Logo + Text + Hamburger */}
-        <div className={`relative w-auto max-w-[463px] lg:w-[463px] transition-all duration-300 ${
-          isScrolled ? 'h-[80px]' : 'h-[116px]'
+        <div className={`relative w-[calc(100vw-32px)] max-w-[463px] transition-all duration-300 ${
+          isScrolled ? 'h-[70px] sm:h-[80px]' : 'h-[100px] sm:h-[116px]'
         }`}>
           {/* Background SVG with special shape - chamfer on bottom-left */}
           {/* viewBox y path fijos para evitar salto visual - el SVG escala con el contenedor */}
@@ -313,15 +313,15 @@ export function Header() {
           </svg>
           {/* Content */}
           <div className={`relative z-10 flex w-full items-start justify-between transition-all duration-300 ${
-            isScrolled ? 'h-[80px]' : 'h-[116px]'
+            isScrolled ? 'h-[70px] sm:h-[80px]' : 'h-[100px] sm:h-[116px]'
           }`}>
             {/* Logo + Text Section */}
-            <div className={`flex shrink-0 items-start gap-6 px-4 py-3 transition-all duration-300 ${
-              isScrolled ? 'h-[80px]' : 'h-[116px]'
+            <div className={`flex shrink-0 items-start gap-3 sm:gap-6 px-3 sm:px-4 py-2 sm:py-3 transition-all duration-300 ${
+              isScrolled ? 'h-[70px] sm:h-[80px]' : 'h-[100px] sm:h-[116px]'
             }`}>
-              <a href="/" className={`flex items-start gap-6 ${isScrolled ? 'h-full' : ''}`}>
+              <a href="/" className={`flex items-start gap-3 sm:gap-6 ${isScrolled ? 'h-full' : ''}`}>
                 {/* Isotipo */}
-                <div className="relative h-[52px] w-[65px] shrink-0">
+                <div className="relative h-[44px] w-[55px] sm:h-[52px] sm:w-[65px] shrink-0">
                   <Image
                     src="/images/vertek-isotipo.svg"
                     alt="Vertek"
@@ -332,10 +332,10 @@ export function Header() {
 
                 {/* Text Content */}
                 <div className={`flex shrink-0 flex-col items-start justify-between transition-all duration-300 ${
-                  isScrolled ? 'h-[56px]' : 'h-[92px]'
+                  isScrolled ? 'h-[46px] sm:h-[56px]' : 'h-[76px] sm:h-[92px]'
                 }`}>
                   {/* Wordmark */}
-                  <div className="relative h-[13px] w-[56px] shrink-0">
+                  <div className="relative h-[11px] w-[48px] sm:h-[13px] sm:w-[56px] shrink-0">
                     <Image
                       src="/images/vertek-wordmark.svg"
                       alt="vertek"
@@ -346,10 +346,9 @@ export function Header() {
 
                   {/* Description */}
                   <p
-                    className="not-italic text-black transition-all duration-300 whitespace-nowrap"
+                    className="not-italic text-black transition-all duration-300 whitespace-nowrap text-[11px] sm:text-[14px]"
                     style={{
                       fontFamily: 'Helvetica Neue, sans-serif',
-                      fontSize: '14px',
                       fontWeight: 400,
                       lineHeight: 1.05,
                     }}
@@ -361,8 +360,8 @@ export function Header() {
             </div>
 
             {/* Hamburger Menu with separator */}
-            <div className={`relative w-[119px] shrink-0 flex items-center justify-center border-l border-gray-300 transition-all duration-300 ${
-              isScrolled ? 'h-[80px]' : 'h-[116px]'
+            <div className={`relative w-[70px] sm:w-[90px] lg:w-[119px] shrink-0 flex items-center justify-center border-l border-gray-300 transition-all duration-300 ${
+              isScrolled ? 'h-[70px] sm:h-[80px]' : 'h-[100px] sm:h-[116px]'
             }`}>
               {/* Hamburger button */}
               <button
@@ -377,14 +376,14 @@ export function Header() {
                     y: isMenuOpen ? 6 : 0,
                   }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="block h-[1px] w-8 bg-black"
+                  className="block h-[1px] w-6 sm:w-8 bg-black"
                 />
                 <motion.span
                   animate={{
                     opacity: isMenuOpen ? 0 : 1,
                   }}
                   transition={{ duration: 0.2 }}
-                  className="block h-[1px] w-8 bg-black"
+                  className="block h-[1px] w-6 sm:w-8 bg-black"
                 />
                 <motion.span
                   animate={{
@@ -392,7 +391,7 @@ export function Header() {
                     y: isMenuOpen ? -6 : 0,
                   }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="block h-[1px] w-8 bg-black"
+                  className="block h-[1px] w-6 sm:w-8 bg-black"
                 />
               </button>
             </div>
@@ -423,7 +422,7 @@ export function Header() {
           {/* CTA Button - Chamfered corners - always visible */}
           <a
             href="/contacto"
-            className="group relative h-[40px] w-[160px] lg:w-[195px] transition-all"
+            className="group relative hidden lg:flex h-[40px] w-[160px] lg:w-[195px] transition-all"
           >
             <svg
               className="absolute inset-0 h-full w-full"
