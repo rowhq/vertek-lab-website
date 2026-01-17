@@ -343,6 +343,8 @@ function MobileVersion() {
 // Desktop Horizontal Scroll Version
 function HorizontalScrollVersion() {
   const containerRef = useRef<HTMLElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isSnappingRef = useRef(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -354,19 +356,71 @@ function HorizontalScrollVersion() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
+  // Función para animar al snap más cercano
+  const snapToNearestStep = (currentProgress: number) => {
+    if (isSnappingRef.current || !containerRef.current) return;
+
+    let targetProgress: number;
+    if (currentProgress < 0.25) {
+      targetProgress = 0;
+    } else if (currentProgress < 0.75) {
+      targetProgress = 0.5;
+    } else {
+      targetProgress = 1;
+    }
+
+    // Solo hacer snap si no estamos ya en la posición objetivo
+    const threshold = 0.02;
+    if (Math.abs(currentProgress - targetProgress) < threshold) return;
+
+    // Calcular posición de scroll objetivo
+    const container = containerRef.current;
+    const scrollableHeight = container.offsetHeight * 2; // 300vh - 100vh = 200vh de scroll
+    const targetScrollY = container.offsetTop + (scrollableHeight * targetProgress);
+
+    isSnappingRef.current = true;
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: 'smooth'
+    });
+
+    // Reset después de la animación
+    setTimeout(() => {
+      isSnappingRef.current = false;
+    }, 500);
+  };
+
   useEffect(() => {
     const unsubscribe = scrollYProgress.on('change', (latest) => {
       setProgress(latest);
-      if (latest < 0.28) {
+
+      // Actualizar índice activo
+      if (latest < 0.25) {
         setActiveIndex(0);
-      } else if (latest < 0.62) {
+      } else if (latest < 0.75) {
         setActiveIndex(1);
       } else {
         setActiveIndex(2);
       }
+
+      // Debounce para detectar fin de scroll y hacer snap
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      if (!isSnappingRef.current) {
+        scrollTimeoutRef.current = setTimeout(() => {
+          snapToNearestStep(latest);
+        }, 150);
+      }
     });
 
-    return () => unsubscribe();
+    return () => {
+      unsubscribe();
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
   }, [scrollYProgress]);
 
   return (
