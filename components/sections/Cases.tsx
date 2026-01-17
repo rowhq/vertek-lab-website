@@ -82,10 +82,10 @@ export function Cases() {
               transition={{ delay: index * 0.1 }}
             >
               {/* Project Row */}
-              <div className="group grid cursor-pointer grid-cols-[50px_1fr_auto_30px] items-center gap-4 py-6 transition-all hover:opacity-80 lg:grid-cols-[100px_1fr_auto_50px] lg:gap-8 lg:py-8">
+              <div className="group grid cursor-pointer grid-cols-[35px_1fr_auto_24px] sm:grid-cols-[45px_1fr_auto_28px] md:grid-cols-[70px_1fr_auto_40px] lg:grid-cols-[100px_1fr_auto_50px] items-center gap-2 sm:gap-3 md:gap-6 lg:gap-8 py-4 sm:py-5 md:py-6 lg:py-8 transition-all hover:opacity-80">
                 {/* Number */}
                 <span
-                  className="text-3xl text-white/40 lg:text-5xl"
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-5xl text-white/40"
                   style={{ ...helvetica, fontWeight: 200 }}
                 >
                   {project.number}
@@ -93,7 +93,7 @@ export function Cases() {
 
                 {/* Title */}
                 <h3
-                  className="text-2xl text-white lg:text-5xl"
+                  className="text-lg sm:text-xl md:text-2xl lg:text-5xl text-white"
                   style={{ ...helvetica, fontWeight: 400 }}
                 >
                   {project.title}
@@ -101,7 +101,7 @@ export function Cases() {
 
                 {/* Category */}
                 <span
-                  className="text-xs text-white/50 lg:text-sm"
+                  className="text-[10px] sm:text-xs md:text-sm text-white/50"
                   style={helvetica}
                 >
                   {project.category}

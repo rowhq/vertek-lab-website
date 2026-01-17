@@ -85,7 +85,7 @@ function SidebarMenu({
               ease: [0.22, 1, 0.36, 1],
             }}
             style={{ transformOrigin: 'top' }}
-            className="fixed left-4 top-4 z-50 w-[463px]"
+            className="fixed left-4 right-4 top-4 z-50 w-auto max-w-[463px] lg:right-auto lg:w-[463px]"
           >
             {/* Menu container with chamfered bottom-left corner */}
             <div className="relative">
@@ -103,7 +103,7 @@ function SidebarMenu({
               </svg>
 
               {/* Content */}
-              <div className="relative z-10 flex h-[716px] flex-col justify-between">
+              <div className="relative z-10 flex h-[min(716px,calc(100vh-32px))] flex-col justify-between overflow-y-auto">
                 {/* Top section */}
                 <div>
                   {/* Header - altura condicional según scroll */}
@@ -169,7 +169,7 @@ function SidebarMenu({
                               onClick={() => setExpandedItem(expandedItem === item.label ? null : item.label)}
                               className="group flex w-full items-center justify-between px-4 pr-8 text-black transition-colors hover:text-purple"
                             >
-                              <span className="text-[28px]" style={{ fontFamily: 'Helvetica Neue, sans-serif', lineHeight: 1.5 }}>
+                              <span className="text-xl sm:text-2xl lg:text-[28px]" style={{ fontFamily: 'Helvetica Neue, sans-serif', lineHeight: 1.5 }}>
                                 {item.label}
                               </span>
                               <motion.svg
@@ -217,7 +217,7 @@ function SidebarMenu({
                             onClick={onClose}
                             className="group flex items-center justify-between px-4 pr-8 text-black transition-colors hover:text-purple"
                           >
-                            <span className="text-[28px]" style={{ fontFamily: 'Helvetica Neue, sans-serif', lineHeight: 1.5 }}>
+                            <span className="text-xl sm:text-2xl lg:text-[28px]" style={{ fontFamily: 'Helvetica Neue, sans-serif', lineHeight: 1.5 }}>
                               {item.label}
                             </span>
                           </a>
@@ -295,7 +295,7 @@ export function Header() {
     <header className="fixed left-0 right-0 top-0 z-50 bg-transparent transition-all duration-300">
       <div className="flex h-auto items-stretch justify-between p-4">
         {/* Left: Card with Logo + Text + Hamburger */}
-        <div className={`relative w-[463px] transition-all duration-300 ${
+        <div className={`relative w-auto max-w-[463px] lg:w-[463px] transition-all duration-300 ${
           isScrolled ? 'h-[80px]' : 'h-[116px]'
         }`}>
           {/* Background SVG with special shape - chamfer on bottom-left */}
@@ -312,7 +312,7 @@ export function Header() {
             />
           </svg>
           {/* Content */}
-          <div className={`relative z-10 flex w-[463px] items-start justify-between transition-all duration-300 ${
+          <div className={`relative z-10 flex w-full items-start justify-between transition-all duration-300 ${
             isScrolled ? 'h-[80px]' : 'h-[116px]'
           }`}>
             {/* Logo + Text Section */}

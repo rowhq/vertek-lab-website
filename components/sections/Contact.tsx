@@ -207,7 +207,7 @@ export function Contact() {
                 onChange={handleChange}
                 aria-invalid={!!errors.name}
                 placeholder="Tu nombre"
-                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-4 sm:py-3 text-base text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
                 style={helvetica}
               />
               {errors.name && (
@@ -234,7 +234,7 @@ export function Contact() {
                 onChange={handleChange}
                 aria-invalid={!!errors.email}
                 placeholder="tu@correo.com"
-                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-4 sm:py-3 text-base text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
                 style={helvetica}
               />
               {errors.email && (
@@ -260,7 +260,7 @@ export function Contact() {
                 value={formData.company}
                 onChange={handleChange}
                 placeholder="Tu empresa"
-                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-4 sm:py-3 text-base text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
                 style={helvetica}
               />
             </div>
@@ -279,7 +279,7 @@ export function Contact() {
                 name="projectType"
                 value={formData.projectType}
                 onChange={handleChange}
-                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black transition-colors focus:border-[#5D04F6] focus:outline-none"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-4 sm:py-3 text-base text-black transition-colors focus:border-[#5D04F6] focus:outline-none"
                 style={helvetica}
               >
                 <option value="mvp">Sistema MVP (5-7 días)</option>
@@ -305,7 +305,7 @@ export function Contact() {
                 onChange={handleChange}
                 aria-invalid={!!errors.message}
                 placeholder="Cuéntanos sobre tu proyecto..."
-                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-3 text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
+                className="mt-2 w-full border-0 border-b border-black/10 bg-transparent py-4 sm:py-3 text-base text-black placeholder-black/30 transition-colors focus:border-[#5D04F6] focus:outline-none"
                 style={helvetica}
               />
               {errors.message && (
@@ -323,11 +323,11 @@ export function Contact() {
                 name="consent"
                 checked={formData.consent}
                 onChange={handleChange}
-                className="mt-1 h-4 w-4 accent-[#5D04F6]"
+                className="mt-1 h-6 w-6 sm:h-5 sm:w-5 cursor-pointer accent-[#5D04F6]"
               />
               <label
                 htmlFor="consent"
-                className="text-sm text-black/60"
+                className="text-sm sm:text-sm text-black/60 cursor-pointer"
                 style={helvetica}
               >
                 Acepto ser contactado por VERTEK.lab respecto a mi consulta. *

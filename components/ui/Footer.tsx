@@ -142,7 +142,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-secondary transition-colors hover:text-accent"
+                    className="text-secondary transition-colors hover:text-accent active:text-accent"
                     aria-label={social.label}
                   >
                     {social.icon}
@@ -161,7 +161,7 @@ export function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-secondary transition-colors hover:text-black"
+                      className="text-base sm:text-sm text-secondary transition-colors hover:text-black active:text-black"
                     >
                       {link.label}
                     </a>
@@ -180,7 +180,7 @@ export function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-secondary transition-colors hover:text-black"
+                      className="text-base sm:text-sm text-secondary transition-colors hover:text-black active:text-black"
                     >
                       {link.label}
                     </a>
@@ -198,7 +198,7 @@ export function Footer() {
                 <li>
                   <a
                     href="mailto:contact@vertek.lab"
-                    className="text-sm text-secondary transition-colors hover:text-black"
+                    className="text-base sm:text-sm text-secondary transition-colors hover:text-black active:text-black"
                   >
                     contact@vertek.lab
                   </a>
@@ -219,10 +219,10 @@ export function Footer() {
               © {new Date().getFullYear()} Vertek.lab. Todos los derechos reservados.
             </p>
             <div className="flex items-center gap-6 text-xs text-secondary">
-              <a href="/privacy" className="transition-colors hover:text-black">
+              <a href="/privacy" className="transition-colors hover:text-black active:text-black">
                 Politica de Privacidad
               </a>
-              <a href="/terms" className="transition-colors hover:text-black">
+              <a href="/terms" className="transition-colors hover:text-black active:text-black">
                 Terminos de Servicio
               </a>
             </div>

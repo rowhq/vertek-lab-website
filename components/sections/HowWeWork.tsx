@@ -52,7 +52,7 @@ function Panel({ step, isActive }: { step: typeof process[0]; isActive: boolean 
           transition={{ duration: 0.5 }}
         >
           <span
-            className="text-[120px] leading-none lg:text-[260px]"
+            className="text-[80px] sm:text-[100px] md:text-[120px] lg:text-[180px] xl:text-[260px] leading-none"
             style={{
               ...helvetica,
               fontWeight: 100,
@@ -230,7 +230,7 @@ function MobileVersion() {
               {/* Giant Number */}
               <div className="flex items-center">
                 <span
-                  className="text-[80px] leading-none"
+                  className="text-[60px] sm:text-[70px] leading-none"
                   style={{
                     ...helvetica,
                     fontWeight: 100,

@@ -483,7 +483,7 @@ export function ClientTypes() {
               </div>
 
               {/* Content */}
-              <div className="flex flex-1 flex-col p-6 lg:p-8">
+              <div className="flex flex-1 flex-col p-4 sm:p-5 md:p-6 lg:p-8">
                 {/* Title */}
                 <h3
                   className="mb-4 text-xl text-black lg:text-2xl"

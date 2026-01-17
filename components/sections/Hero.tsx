@@ -16,7 +16,7 @@ export function Hero() {
       className="relative min-h-screen overflow-hidden bg-[#5D04F6]"
     >
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-screen flex-col px-4 pt-36 lg:px-6 lg:pt-48">
+      <div className="relative z-10 flex min-h-screen flex-col px-4 pt-24 sm:pt-28 md:pt-32 lg:px-6 lg:pt-48">
         {/* Services List - Left aligned */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -49,7 +49,7 @@ export function Hero() {
             alt="vertek"
             width={706}
             height={164}
-            className="w-[50vw] lg:w-[45vw] h-auto select-none"
+            className="w-[70vw] sm:w-[60vw] md:w-[50vw] lg:w-[45vw] h-auto select-none"
             priority
           />
         </motion.div>
